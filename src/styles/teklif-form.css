@@ -1,0 +1,391 @@
+/* ─── Teklif Form Shared Styles ─── */
+.teklif-form-area {
+  max-width: 600px;
+  margin: 0 auto;
+  border-radius: 22.398px;
+  background: var(--solid-white, #FFF);
+  padding: 30px 40px;
+}
+.teklif-form-area .f-title {
+  color: #E7462C;
+  font-family: var(--font-mulish), Mulish, sans-serif;
+  font-size: 27.204px;
+  display: block;
+  font-style: normal;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 900;
+  line-height: 45.307px;
+  letter-spacing: 0.472px;
+}
+.teklif-box i {
+  color: #000000;
+  font-size: 45px !important;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.teklif-box span {
+  color: #FF7500;
+  font-family: var(--font-mulish), Mulish, sans-serif;
+  font-size: 14.696px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 22.044px;
+  letter-spacing: 0.23px;
+}
+.teklif-content {
+  background-image: url('/images/newdetail-bg.svg');
+  min-height: 100vh;
+  background-size: cover !important;
+  display: grid;
+  grid-template-columns: 0.6fr 0.4fr;
+  align-items: flex-start !important;
+  background-position: left;
+  padding: 130px 50px 100px;
+  gap: 20px;
+}
+.insurance-options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px 20px;
+  max-width: 770px;
+  width: 100%;
+}
+.teklif-box {
+  max-width: 168px;
+  border-radius: 15.62px;
+  background: var(--solid-white, #FFF);
+  flex: 1 1 calc(25% - 20px);
+  text-align: center;
+  padding: 6px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  align-items: center;
+  justify-content: center;
+}
+.has-items .ts-control input {
+  display: none !important;
+}
+.ts-wrapper:not(.form-control,.form-select).single .ts-control {
+  background-position: right 25px center;
+  background-repeat: no-repeat;
+  background-size: 20px 16px;
+  border-radius: 0 12px 12px 0 !important;
+  border: 1px solid #A9AFB7 !important;
+  border-left: 0 !important;
+  box-shadow: none !important;
+  padding-left: 0 !important;
+  color: black;
+  font-family: var(--font-open-sans), "Open Sans", sans-serif;
+  height: 44px !important;
+  min-height: auto !important;
+  font-size: 17.919px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.ts-dropdown .active, .ts-dropdown .active.create {
+  color: var(--bs-body-color);
+  background: #dee2e6;
+}
+.teklif-form-area .just-validate-error-label {
+  width: 100%;
+}
+.teklif-box:nth-child(9),
+.teklif-box:nth-child(10),
+.teklif-box:nth-child(11) {
+  flex: 1 1 calc(33.33% - 20px);
+}
+.teklif-form-area input:not(.form-check-input,#tomselect-1-ts-control,.kvkkCheck) {
+  border-radius: 0 12px 12px 0 !important;
+  border: 1px solid #A9AFB7 !important;
+  border-left: 0 !important;
+  box-shadow: none !important;
+  padding-left: 0 !important;
+  color: black;
+  font-family: var(--font-open-sans), "Open Sans", sans-serif;
+  min-height: auto !important;
+  font-size: 17.919px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.teklif-form-area .kvkk-label {
+  color: #6A747B;
+}
+.teklif-form-area input::placeholder {
+  color: #A9AFB7;
+  font-family: var(--font-open-sans), "Open Sans", sans-serif;
+  font-size: 17.919px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.teklif-form-area .input-group-text {
+  box-shadow: none !important;
+  border-radius: 12px 0 0 12px !important;
+  border: 1px solid #A9AFB7 !important;
+  background: white !important;
+  border-right: 0 !important;
+}
+.input-group-text i {
+  font-size: 20px;
+  color: #6A747B !important;
+}
+.input-group input:-webkit-autofill,
+.input-group input:-webkit-autofill:hover,
+.input-group input:-webkit-autofill:focus,
+.input-group input:-webkit-autofill:active {
+  -webkit-transition: background-color 5000s;
+  transition: background-color 5000s;
+}
+.ts-control {
+  padding: 0 !important;
+}
+.focus .ts-control {
+  -webkit-box-shadow: 0 1px 2px 0 rgba(10,13,20,.03) !important;
+  box-shadow: 0 1px 2px 0 rgba(10,13,20,.03) !important;
+  border-color: #e1e4ea !important;
+}
+.pills::before {
+  left: 5px !important;
+}
+.switch-bg .just-validate-error-label {
+  margin-top: 0px !important;
+}
+.btn_teklif {
+  border-radius: 12px;
+  background: #E7462C;
+  width: 100% !important;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--solid-white, #FFF) !important;
+  font-family: var(--font-open-sans), "Open Sans", sans-serif;
+  font-size: 19px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 28.558px;
+  letter-spacing: 0.56px;
+}
+.form-input.col.form-group.re-style {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 20px 0;
+  zoom: 0.7;
+}
+.wp-call {
+  width: fit-content;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  border-radius: 9.088px;
+  background: rgba(255, 210, 49, 0.29);
+  padding: 20px 30px;
+  margin: 20px auto 0;
+  gap: 15px;
+}
+.wp-call span {
+  color: var(--solid-white, #FFF);
+  font-family: var(--font-mulish), Mulish, sans-serif;
+  font-size: 25.384px;
+  font-style: normal;
+  font-weight: 1000;
+  line-height: 32.719px;
+  letter-spacing: 0.397px;
+  display: block;
+}
+.teklif-form-area label.kvkk-label {
+  margin-left: 0 !important;
+  margin-top: 0 !important;
+  flex: 1;
+  line-height: 1.5;
+  cursor: pointer;
+  font-size: 14px;
+}
+.kvkkCheck {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  width: 24px !important;
+  height: 24px !important;
+  min-width: 24px !important;
+  min-height: 24px !important;
+  max-height: 24px !important;
+  border: 2px solid #cbcbcb !important;
+  border-radius: 4px !important;
+  background: #fff !important;
+  cursor: pointer !important;
+  position: relative !important;
+  flex-shrink: 0;
+  left: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+.kvkkCheck:hover {
+  border-color: #e7462c !important;
+}
+.kvkkCheck:checked {
+  background-color: #e7462c !important;
+  border-color: #e7462c !important;
+}
+.kvkkCheck:checked::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 7px;
+  top: 3px;
+  width: 6px;
+  height: 12px;
+  border: solid #fff;
+  border-width: 0 2.5px 2.5px 0;
+  transform: rotate(45deg);
+}
+.switch-bg {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  flex-wrap: wrap !important;
+}
+.switch-bg::before {
+  display: none !important;
+  content: none !important;
+}
+.switch-bg .pills,
+.switch-bg .pills::before {
+  display: none !important;
+  content: none !important;
+}
+.form-input {
+  padding: 0 !important;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .teklif-box {
+    flex: 1 1 calc(50% - 20px);
+  }
+  .teklif-box:nth-child(9),
+  .teklif-box:nth-child(10),
+  .teklif-box:nth-child(11) {
+    flex: 1 1 100%;
+  }
+}
+@media (max-width: 480px) {
+  .teklif-box {
+    flex: 1 1 100%;
+  }
+}
+@media (max-width: 1348px) {
+  .teklif-left {
+    zoom: 0.7;
+  }
+  .teklif-form-area {
+    max-width: 460px;
+  }
+}
+@media (max-width: 992px) {
+  .teklif-form-area {
+    max-width: 100% !important;
+  }
+  .wp-call span {
+    font-size: 18px;
+    line-height: normal;
+  }
+  .wp-call {
+    margin-bottom: 50px !important;
+  }
+  .teklif-left img {
+    display: none !important;
+  }
+  .teklif-right img {
+    display: block !important;
+    width: 300px;
+    margin: 0 auto;
+  }
+  .wp-call img {
+    width: 50px !important;
+  }
+  .teklif-content {
+    grid-template-columns: 1fr;
+  }
+  .teklif-left {
+    order: 2;
+  }
+}
+@media (max-width: 500px) {
+  .teklif-form-area {
+    margin-top: 20px !important;
+  }
+  .teklif-right img {
+    width: 200px !important;
+  }
+  .wp-call img {
+    width: 50px !important;
+  }
+  .wp-call {
+    margin-bottom: 20px !important;
+  }
+  .teklif-left {
+    zoom: 1;
+  }
+  .teklif-content {
+    padding: 80px 20px;
+  }
+  .teklif-form-area {
+    padding: 20px 20px;
+  }
+  .teklif-form-area input::placeholder {
+    font-size: 14.919px;
+  }
+  .teklif-form-area input {
+    font-size: 14.919px !important;
+  }
+  .teklif-form-area .f-title {
+    font-size: 24px;
+    margin-bottom: 10px !important;
+    line-height: normal !important;
+  }
+  .kvkk-label {
+    font-size: 12px !important;
+  }
+  .form-input.col.form-group.re-style {
+    zoom: 1;
+  }
+  .teklif-box {
+    padding: 6px 6px 10px !important;
+  }
+  .teklif-box span {
+    font-size: 13.5px;
+    line-height: normal !important;
+  }
+}
+@media (max-width: 1650px) {
+  .teklif-form-area {
+    padding: 20px 40px !important;
+    zoom: 0.8;
+  }
+  .teklif-content {
+    min-height: auto !important;
+  }
+  .teklif-form-area .f-title {
+    font-size: 24px !important;
+    margin-bottom: 10px !important;
+  }
+}
+@media (max-width: 768px) {
+  .teklif-form-area {
+    zoom: 1 !important;
+  }
+  .col-lg-8.mb-2-9 {
+    margin-bottom: 0 !important;
+  }
+}
