@@ -203,6 +203,7 @@ export default function BlogFilterBar({ posts, categories }: Props) {
                         height={250}
                         className="rounded"
                         style={{ width: "100%", height: "auto", objectFit: "cover" }}
+                        sizes="(max-width: 768px) 100vw, (max-width: 992px) 50vw, 33vw"
                       />
                     ) : (
                       <div className="rounded bg-secondary" style={{ width: "100%", height: 200 }} />

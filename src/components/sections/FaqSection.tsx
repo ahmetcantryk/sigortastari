@@ -136,6 +136,7 @@ export default function FaqSection() {
                 alt="Anasayfa SSS Görseli"
                 width={570}
                 height={570}
+                sizes="(max-width: 992px) 100vw, 50vw"
               />
             </div>
           </div>

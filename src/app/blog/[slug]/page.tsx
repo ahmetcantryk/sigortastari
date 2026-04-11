@@ -155,6 +155,7 @@ export default async function BlogDetailPage({ params }: Props) {
                         className="card-img-top"
                         style={{ width: "100%", height: "auto", objectFit: "cover" }}
                         priority
+                        sizes="(max-width: 992px) 100vw, 66vw"
                       />
                     )}
                     <div className="card-body p-1-9 position-relative">
@@ -218,6 +219,7 @@ export default async function BlogDetailPage({ params }: Props) {
                                 height={70}
                                 className="rounded"
                                 style={{ width: 100, height: "auto", objectFit: "cover" }}
+                                sizes="100px"
                               />
                             )}
                           </div>
@@ -273,6 +275,7 @@ export default async function BlogDetailPage({ params }: Props) {
                               height={250}
                               className="rounded"
                               style={{ width: "100%", height: "auto", objectFit: "cover" }}
+                              sizes="(max-width: 768px) 100vw, (max-width: 992px) 50vw, 33vw"
                             />
                           )}
                         </Link>

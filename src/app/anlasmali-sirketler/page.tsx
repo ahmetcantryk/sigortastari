@@ -25,73 +25,73 @@ const companies = [
   { name: "Hepiyi", logo: "/images/hepiyi.svg", alt: "Hepiyi Görseli" },
   {
     name: "Madgeburger Sigorta",
-    logo: "/images/madgeburger(2).png",
+    logo: "/images/madgeburger(2).webp",
     alt: "Madgeburger Sigorta Görseli",
   },
   {
     name: "Mapfre Sigorta",
-    logo: "/images/mapfre(2).png",
+    logo: "/images/mapfre(2).webp",
     alt: "Mapfre Sigorta Görseli",
   },
   {
     name: "Ray Sigorta",
-    logo: "/images/ray(2).png",
+    logo: "/images/ray(2).webp",
     alt: "Ray Sigorta Görseli",
   },
   {
     name: "Doğa Sigorta",
-    logo: "/images/doga(2).png",
+    logo: "/images/doga(2).webp",
     alt: "Doğa Sigorta Görseli",
   },
   {
     name: "Demir Sigorta",
-    logo: "/images/demir(2).png",
+    logo: "/images/demir(2).webp",
     alt: "Demir Sigorta Görseli",
   },
   {
     name: "Bereket Sigorta",
-    logo: "/images/bereket(2).png",
+    logo: "/images/bereket(2).webp",
     alt: "Bereket sigorta Görseli",
   },
   {
     name: "Axa Sigorta",
-    logo: "/images/axa(3).png",
+    logo: "/images/axa(3).webp",
     alt: "Axa Sigorta Görseli",
   },
-  { name: "Aveon", logo: "/images/aveon(2).png", alt: "Aveon Görseli" },
+  { name: "Aveon", logo: "/images/aveon(2).webp", alt: "Aveon Görseli" },
   {
     name: "Allianz Sigorta",
-    logo: "/images/allianz(2).png",
+    logo: "/images/allianz(2).webp",
     alt: "Allianz Sigorta Görseli",
   },
   {
     name: "Ak Sigorta",
-    logo: "/images/ak(2).png",
+    logo: "/images/ak(2).webp",
     alt: "Ak Sigorta Görseli",
   },
   {
     name: "Sompo Sigorta",
-    logo: "/images/sompo(2).png",
+    logo: "/images/sompo(2).webp",
     alt: "Sompo Sigorta Görseli",
   },
   {
     name: "Türkiye Sigorta",
-    logo: "/images/turkiye-sigorta.png",
+    logo: "/images/turkiye-sigorta.webp",
     alt: "Türkiye Sigorta Görseli",
   },
   {
     name: "Türk Nippon Sigorta",
-    logo: "/images/turk-nippon(2).png",
+    logo: "/images/turk-nippon(2).webp",
     alt: "Türk Nippon Sigorta Görseli",
   },
   {
     name: "Anadolu Sigorta",
-    logo: "/images/anadolu(2).png",
+    logo: "/images/anadolu(2).webp",
     alt: "Anadolu Sigorta Görseli",
   },
   {
     name: "Quick Sigorta",
-    logo: "/images/quick-1.png",
+    logo: "/images/quick-1.webp",
     alt: "Quick Sigorta Görseli",
   },
 ];
@@ -208,6 +208,7 @@ export default function AnlasmaliSirketlerPage() {
                   height={100}
                   alt={company.alt}
                   style={{ width: "100%", height: "100%" }}
+                  sizes="200px"
                 />
               </div>
             ))}

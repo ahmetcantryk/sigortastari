@@ -69,6 +69,7 @@ export default function BlogSection() {
                         alt={post.alt}
                         width={384}
                         height={256}
+                        sizes="(max-width: 768px) 100vw, (max-width: 992px) 50vw, 33vw"
                       />
                     </Link>
                   </div>

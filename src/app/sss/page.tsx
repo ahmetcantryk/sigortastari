@@ -136,6 +136,7 @@ export default function SSSPage() {
                   alt="SSS Görsel"
                   width={570}
                   height={570}
+                  sizes="(max-width: 992px) 100vw, 50vw"
                 />
               </div>
             </div>

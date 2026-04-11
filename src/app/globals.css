@@ -117,6 +117,25 @@ body {
 }
 
 
+/* ─── Swiper pagination dots (owl-dots style) ─── */
+.feature-carousel .swiper-pagination {
+  position: relative;
+  margin-top: 30px;
+}
+
+.feature-carousel .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background: #c5cad2;
+  opacity: 1;
+  margin: 0 5px !important;
+  transition: background 0.3s;
+}
+
+.feature-carousel .swiper-pagination-bullet-active {
+  background: #E7462C;
+}
+
 /* ─── Next.js Image aspect ratio fix ─── */
 img {
   height: auto;

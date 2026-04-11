@@ -86,9 +86,10 @@ export default function WhyChooseUs() {
                       <Image
                         loading="lazy"
                         alt="Avantajlarımız Görseli"
-                        src="/images/icon-13.png"
+                        src="/images/icon-13.webp"
                         width={80}
                         height={80}
+                        sizes="80px"
                       />
                     </div>
                     <div className="flex-grow-1 ms-3">

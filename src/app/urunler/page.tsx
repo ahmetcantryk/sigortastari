@@ -116,7 +116,7 @@ export default function UrunlerPage() {
     <>
       <PageBanner
         title="Ürünler"
-        backgroundImage="/images/urunler-banner.png"
+        backgroundImage="/images/urunler-banner.webp"
         breadcrumbs={[
           { label: "Anasayfa", href: "/" },
           { label: "Ürünler", href: "/urunler" },
@@ -148,6 +148,7 @@ export default function UrunlerPage() {
                       width={400}
                       height={250}
                       style={{ width: "100%", height: "auto" }}
+                      sizes="(max-width: 768px) 100vw, (max-width: 992px) 50vw, 33vw"
                     />
                   </div>
                   <div className="card-body p-1-6 p-sm-1-9 pt-2-3 position-relative">

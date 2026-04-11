@@ -105,7 +105,7 @@ export default function Home() {
                 padding-top: 40px !important;
               }
               .ex {
-                background-image: url("/images/anne-g.png") !important;
+                background-image: url("/images/anne-g.webp") !important;
               }
             }
           `,

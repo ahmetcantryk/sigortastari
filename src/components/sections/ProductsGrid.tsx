@@ -1,11 +1,12 @@
 "use client";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
 import Image from "next/image";
 import Link from "next/link";
 
 import "swiper/css";
+import "swiper/css/pagination";
 
 const productCards = [
   {
@@ -110,8 +111,9 @@ export default function ProductsGrid() {
         </div>
 
         <Swiper
-          modules={[Autoplay]}
+          modules={[Autoplay, Pagination]}
           autoplay={{ delay: 3000, disableOnInteraction: false }}
+          pagination={{ clickable: true }}
           loop
           spaceBetween={16}
           slidesPerView={1}
@@ -133,6 +135,7 @@ export default function ProductsGrid() {
                     height={270}
                     className="card-img-top"
                     alt={product.alt}
+                    sizes="(max-width: 768px) 100vw, (max-width: 992px) 50vw, 33vw"
                   />
                 </div>
                 <div className="card-body p-1-6 p-sm-1-9 pt-2-3 position-relative">

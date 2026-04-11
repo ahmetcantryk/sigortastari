@@ -68,6 +68,7 @@ export default function TeklifAlClient() {
           width={200}
           height={60}
           style={{ width: "auto", height: "auto" }}
+          sizes="200px"
         />
         <h1>Tüm Sigorta Ürünlerimizde Size Özel İndirimler!</h1>
         <div className="insurance-options">
@@ -99,6 +100,7 @@ export default function TeklifAlClient() {
           width={200}
           height={60}
           style={{ width: "auto", height: "auto" }}
+          sizes="200px"
         />
         <QuoteForm
           preselectedProduct={selectedProduct}
@@ -118,6 +120,7 @@ export default function TeklifAlClient() {
             width={60}
             height={60}
             style={{ width: "auto", height: "auto" }}
+            sizes="60px"
           />
           <span>
             WhatsApp

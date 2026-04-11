@@ -34,6 +34,7 @@ export default function ClientsCarousel() {
                   height={80}
                   alt={`${company.name} Görseli`}
                   style={{ width: "100%", height: "auto", objectFit: "contain" }}
+                  sizes="150px"
                 />
               </SwiperSlide>
             ))}

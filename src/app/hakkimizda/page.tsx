@@ -91,7 +91,7 @@ export default function HakkimizdaPage() {
 
       <PageBanner
         title="Hakkımızda"
-        backgroundImage="/images/about-banner.png"
+        backgroundImage="/images/about-banner.webp"
         breadcrumbs={[
           { label: "Anasayfa", href: "/" },
           { label: "Hakkımızda", href: "/hakkimizda" },
@@ -113,6 +113,7 @@ export default function HakkimizdaPage() {
                   alt="Hakkımızda Görseli"
                   width={600}
                   height={400}
+                  sizes="(max-width: 992px) 100vw, 50vw"
                 />
               </div>
             </div>

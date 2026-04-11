@@ -14,7 +14,7 @@ export default function Footer() {
                     <div className="col-md-4 col-lg-4 mt-1-9">
                       <div className="footer-logo">
                         <Image
-                          src="/images/beyazlogo-sigortastari.png"
+                          src="/images/beyazlogo-sigortastari.webp"
                           width={170}
                           height={42}
                           alt="Sigorta Starı Beyaz Logo"

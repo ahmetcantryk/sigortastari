@@ -33,6 +33,7 @@ export default function AboutSection() {
                 src="/images/ab-anasayfaa.webp"
                 width={570}
                 height={570}
+                sizes="(max-width: 992px) 100vw, 50vw"
               />
               <Image
                 loading="lazy"
@@ -41,6 +42,7 @@ export default function AboutSection() {
                 src="/images/about-mobil.webp"
                 width={400}
                 height={400}
+                sizes="(max-width: 992px) 100vw, 50vw"
               />
             </div>
           </div>

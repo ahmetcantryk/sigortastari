@@ -57,7 +57,7 @@ export default function Header() {
                                 id="logo"
                                 width={170}
                                 height={42}
-                                src={scrolled ? "/images/logo-renkli.png" : "/images/beyazlogo-sigortastari.png"}
+                                src={scrolled ? "/images/logo-renkli.webp" : "/images/beyazlogo-sigortastari.webp"}
                                 alt="logo"
                                 priority
                                 style={{ width: "auto", height: "auto" }}

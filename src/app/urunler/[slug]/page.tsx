@@ -108,6 +108,7 @@ section { overflow: unset !important; }
             height={400}
             priority
             style={{ width: "auto", height: "auto" }}
+            sizes="(max-width: 992px) 100vw, 50vw"
           />
         </div>
         <div className="teklif-right">
@@ -117,6 +118,7 @@ section { overflow: unset !important; }
             width={200}
             height={60}
             style={{ width: "auto", height: "auto" }}
+            sizes="200px"
           />
           <ProductDetailClient preselectedProduct={content.name} slug={slug} />
         </div>
@@ -177,6 +179,7 @@ section { overflow: unset !important; }
                       width={800}
                       height={450}
                       style={{ width: "100%", height: "auto" }}
+                      sizes="(max-width: 992px) 100vw, 66vw"
                     />
                   </div>
 
