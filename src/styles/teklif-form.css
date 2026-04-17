@@ -1,3 +1,6 @@
+/* ─── Tom Select (sadece form sayfalarında kullanılır) ─── */
+@import "./tom-select.bootstrap5.min.css";
+
 /* ─── Teklif Form Shared Styles ─── */
 .teklif-form-area {
   max-width: 600px;

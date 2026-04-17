@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useRef, useCallback, useState } from "react";
 import IMask from "imask";
 import Swal from "sweetalert2";
+import "sweetalert2/dist/sweetalert2.min.css";
 import KvkkCheckbox from "./KvkkCheckbox";
 
 const quoteSchema = z.object({

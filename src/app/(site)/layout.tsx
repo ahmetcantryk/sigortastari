@@ -60,7 +60,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         />
       </noscript>
       <Header />
-      {children}
+      <main id="main-content">
+        {children}
+      </main>
       <Footer />
     </>
   );

@@ -5,6 +5,7 @@ import { z } from "zod/v4";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useRef, useEffect } from "react";
 import Swal from "sweetalert2";
+import "sweetalert2/dist/sweetalert2.min.css";
 import KvkkCheckbox from "./KvkkCheckbox";
 
 const contactSchema = z.object({

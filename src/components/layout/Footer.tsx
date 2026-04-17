@@ -7,17 +7,18 @@ export default function Footer() {
       <div>
         <div className="row">
           <div className="col" style={{ "--col": "100%", width: "100%", maxWidth: "100%" } as React.CSSProperties}>
-            <footer className="footer-style1 pt-0 overflow-hidden position-relative">
+            <footer className="footer-style1 pt-0 overflow-hidden position-relative" style={{ minHeight: 520 }}>
               <div className="footer-top-info">
                 <div className="container z-index-2 position-relative">
                   <div className="row mt-n1-9">
                     <div className="col-md-4 col-lg-4 mt-1-9">
-                      <div className="footer-logo">
+                      <div className="footer-logo" style={{ width: 170, height: 42 }}>
                         <Image
                           src="/images/beyazlogo-sigortastari.webp"
                           width={170}
                           height={42}
                           alt="Sigorta Starı Beyaz Logo"
+                          style={{ width: 170, height: 42 }}
                         />
                       </div>
                     </div>
@@ -90,6 +91,7 @@ export default function Footer() {
                             href="https://www.facebook.com/SigortaStari"
                             target="_blank"
                             className="fab fa-facebook-f"
+                            aria-label="Facebook sayfamız"
                           ></a>
                         </li>
                         <li className="d-inline-block me-2">
@@ -97,13 +99,15 @@ export default function Footer() {
                             href="https://www.instagram.com/sigortastari"
                             target="_blank"
                             className="fab fa-instagram"
-                          ></a>{" "}
+                            aria-label="Instagram sayfamız"
+                          ></a>
                         </li>
                         <li className="d-inline-block">
                           <a
                             href="https://www.linkedin.com/company/sigortastari"
                             target="_blank"
                             className="fab fa-linkedin-in"
+                            aria-label="LinkedIn sayfamız"
                           ></a>
                         </li>
                       </ul>
@@ -123,7 +127,7 @@ export default function Footer() {
                         <Link href="/sss">Sıkça Sorulan Sorular</Link>
                       </li>
                       <li>
-                        <Link href="/blog">Blog</Link>
+                        <Link href="/bloglar">Blog</Link>
                       </li>
                       <li>
                         <Link href="/kvkk">KVKK Aydınlatma Metni</Link>
@@ -206,11 +210,6 @@ export default function Footer() {
                           <div>
                             <p>© Copy Right 2023 Tüm Hakları Saklıdır.</p>
                           </div>
-                          <span style={{ opacity: 0.02 }}>
-                            <a href="https://www.acercrea.com" target="_blank">
-                              by AcerCrea
-                            </a>
-                          </span>
                         </div>
                       </div>
                     </div>
@@ -224,6 +223,7 @@ export default function Footer() {
                 href="https://api.whatsapp.com/send?phone=905379509897&text=Merhaba,%20sigorta%20teklifi%20almak%20istiyorum.%20Yard%C4%B1mc%C4%B1%20olur%20musunuz?"
                 target="_blank"
                 className="sticky-phone"
+                aria-label="WhatsApp ile iletişime geçin"
               >
                 <svg
                   width="32"
@@ -231,6 +231,7 @@ export default function Footer() {
                   viewBox="0 0 32 30"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
                 >
                   <g clipPath="url(#clip0_233_633)">
                     <path

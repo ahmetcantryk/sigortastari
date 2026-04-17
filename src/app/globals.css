@@ -1,14 +1,36 @@
-/* ─── Existing CSS Libraries (birebir orijinal site) ─── */
+/* ─── Existing CSS Libraries ─── */
 @import "../styles/all.min.css";
 @import "../styles/plugins.css";
 @import "../styles/base.css";
-@import "../styles/slick.min.css";
-@import "../styles/slick-theme.min.css";
-@import "../styles/sweetalert2.min.css";
-@import "../styles/tom-select.bootstrap5.min.css";
 @import "../styles/sigortastari-app.min.css";
 @import "../styles/overrides.css";
 @import "../styles/teklif-form.css";
+
+/* ─── FontAwesome font-display fix (FOIT önleme) ─── */
+@font-face {
+  font-family: "Font Awesome 6 Brands";
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/fa-brands-400.woff2") format("woff2"),
+       url("/fonts/fa-brands-400.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Font Awesome 6 Free";
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/fa-regular-400.woff2") format("woff2"),
+       url("/fonts/fa-regular-400.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Font Awesome 6 Free";
+  font-display: swap;
+  font-style: normal;
+  font-weight: 900;
+  src: url("/fonts/fa-solid-900.woff2") format("woff2"),
+       url("/fonts/fa-solid-900.ttf") format("truetype");
+}
 /* @import "../styles/style_56666296.css"; */
 
 /* ─── Fontello Custom Icon Font ─── */
@@ -103,17 +125,9 @@ body {
   }
 }
 
-/* ─── Preloader hide (original JS hides after load) ─── */
+/* ─── Preloader hide ─── */
 #preloader {
-  animation: fadeOutPreloader 0.3s ease-in-out 0.5s forwards;
-}
-
-@keyframes fadeOutPreloader {
-  to {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-  }
+  display: none !important;
 }
 
 
@@ -134,6 +148,11 @@ body {
 
 .feature-carousel .swiper-pagination-bullet-active {
   background: #E7462C;
+}
+
+/* ─── WhatsApp sticky - composite animation ─── */
+.sticky-phone {
+  will-change: transform, opacity;
 }
 
 /* ─── Next.js Image aspect ratio fix ─── */

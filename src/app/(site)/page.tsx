@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
+import PreloadResources from "@/components/PreloadResources";
 import AboutSection from "@/components/sections/AboutSection";
 import WhyChooseUs from "@/components/sections/WhyChooseUs";
 import FaqSection from "@/components/sections/FaqSection";
@@ -85,6 +86,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
+      <PreloadResources />
       <style
         dangerouslySetInnerHTML={{
           __html: `
