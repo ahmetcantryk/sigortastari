@@ -6,32 +6,7 @@
 @import "../styles/overrides.css";
 @import "../styles/teklif-form.css";
 
-/* ─── FontAwesome font-display fix (FOIT önleme) ─── */
-@font-face {
-  font-family: "Font Awesome 6 Brands";
-  font-display: swap;
-  font-style: normal;
-  font-weight: 400;
-  src: url("/fonts/fa-brands-400.woff2") format("woff2"),
-       url("/fonts/fa-brands-400.ttf") format("truetype");
-}
-@font-face {
-  font-family: "Font Awesome 6 Free";
-  font-display: swap;
-  font-style: normal;
-  font-weight: 400;
-  src: url("/fonts/fa-regular-400.woff2") format("woff2"),
-       url("/fonts/fa-regular-400.ttf") format("truetype");
-}
-@font-face {
-  font-family: "Font Awesome 6 Free";
-  font-display: swap;
-  font-style: normal;
-  font-weight: 900;
-  src: url("/fonts/fa-solid-900.woff2") format("woff2"),
-       url("/fonts/fa-solid-900.ttf") format("truetype");
-}
-/* @import "../styles/style_56666296.css"; */
+/* font-display:swap artık all.min.css içinde */
 
 /* ─── Fontello Custom Icon Font ─── */
 @font-face {

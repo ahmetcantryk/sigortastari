@@ -371,3 +371,17 @@ input[type="checkbox"].kvkkCheck:checked::after {
     width: 50%;
   }
 }
+
+/* ─── Erişilebilirlik: Kontrast düzeltmeleri (WCAG AA 4.5:1) ─── */
+.butn-style3 {
+  background: #c73a24 !important; /* #e7462c -> #c73a24 (kontrast 4.6:1 beyaz üzerinde) */
+}
+.about-link {
+  color: #b33d1f !important; /* turuncu-kırmızı daha koyu */
+}
+.blog-card-text.text-muted {
+  color: #5a6370 !important; /* #6c757d -> #5a6370 daha koyu */
+}
+.card-style9 {
+  color: #2d3748; /* kart içerik daha koyu */
+}
