@@ -1,0 +1,251 @@
+/* ─── Admin Panel Styles ─── */
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+}
+.admin-sidebar {
+  width: 220px;
+  background: #1e293b;
+  color: #fff;
+  padding: 20px 0;
+  flex-shrink: 0;
+}
+.admin-sidebar h2 {
+  font-size: 16px;
+  padding: 0 20px 16px;
+  border-bottom: 1px solid #334155;
+  margin: 0 0 8px;
+}
+.admin-sidebar a {
+  display: block;
+  padding: 10px 20px;
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 14px;
+}
+.admin-sidebar a:hover,
+.admin-sidebar a.active {
+  color: #fff;
+  background: #334155;
+}
+.admin-sidebar .sep {
+  border-top: 1px solid #334155;
+  margin: 8px 0;
+}
+.admin-main {
+  flex: 1;
+  padding: 24px 32px;
+  background: #f8fafc;
+  overflow-x: auto;
+}
+.admin-main h1 {
+  font-size: 22px;
+  margin: 0 0 20px;
+  color: #1e293b;
+}
+
+/* ─── Table ─── */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+.admin-table th {
+  background: #f1f5f9;
+  text-align: left;
+  padding: 10px 14px;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #64748b;
+  font-weight: 600;
+}
+.admin-table td {
+  padding: 10px 14px;
+  border-top: 1px solid #e2e8f0;
+  font-size: 14px;
+  color: #334155;
+  vertical-align: middle;
+}
+.admin-table tr:hover td {
+  background: #f8fafc;
+}
+.admin-table img {
+  width: 60px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* ─── Buttons ─── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.15s;
+}
+.btn:hover { opacity: 0.85; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-primary { background: #3b82f6; color: #fff; }
+.btn-danger { background: #ef4444; color: #fff; }
+.btn-secondary { background: #e2e8f0; color: #334155; }
+.btn-success { background: #22c55e; color: #fff; }
+.btn-sm { padding: 4px 10px; font-size: 12px; }
+
+/* ─── Forms ─── */
+.form-group {
+  margin-bottom: 16px;
+}
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 4px;
+}
+.form-control {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #1e293b;
+  background: #fff;
+  box-sizing: border-box;
+}
+.form-control:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59,130,246,0.15);
+}
+textarea.form-control {
+  min-height: 80px;
+  resize: vertical;
+}
+select.form-control {
+  appearance: auto;
+}
+
+/* ─── Card ─── */
+.card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+/* ─── Toolbar ─── */
+.toolbar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.toolbar .form-control {
+  width: auto;
+  min-width: 200px;
+}
+
+/* ─── Badge ─── */
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.badge-green { background: #dcfce7; color: #166534; }
+.badge-gray { background: #f1f5f9; color: #64748b; }
+
+/* ─── Checkbox ─── */
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.checkbox-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+/* ─── Login ─── */
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f1f5f9;
+}
+.login-box {
+  background: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 360px;
+}
+.login-box h1 {
+  font-size: 20px;
+  margin: 0 0 24px;
+  text-align: center;
+  color: #1e293b;
+}
+.login-box .error {
+  color: #ef4444;
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+/* ─── Quill ─── */
+.quill-wrapper {
+  background: #fff;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.quill-wrapper .ql-toolbar {
+  border: none;
+  border-bottom: 1px solid #e2e8f0;
+}
+.quill-wrapper .ql-container {
+  border: none;
+  min-height: 300px;
+  font-size: 15px;
+}
+.quill-wrapper .ql-editor {
+  min-height: 300px;
+}
+
+/* ─── Form Row ─── */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 768px) {
+  .admin-layout { flex-direction: column; }
+  .admin-sidebar { width: 100%; }
+  .form-row { grid-template-columns: 1fr; }
+}
+
+/* ─── Inline edit ─── */
+.inline-form {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+}
+.inline-form .form-control {
+  flex: 1;
+}

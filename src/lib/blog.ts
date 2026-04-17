@@ -14,7 +14,6 @@ export interface BlogPost {
   short_content: string;
   detail_content: string;
   image: string | null;
-  detail_image: string | null;
   is_popular: boolean;
   published_date: string;
   created_at: string;
@@ -30,7 +29,6 @@ interface BlogPostRow {
   short_content: string;
   detail_content: string;
   image: string | null;
-  detail_image: string | null;
   is_popular: boolean;
   published_date: string;
   created_at: string;
@@ -47,7 +45,6 @@ function mapRow(row: BlogPostRow): BlogPost {
     short_content: row.short_content,
     detail_content: row.detail_content,
     image: row.image,
-    detail_image: row.detail_image,
     is_popular: row.is_popular,
     published_date: row.published_date,
     created_at: row.created_at,
