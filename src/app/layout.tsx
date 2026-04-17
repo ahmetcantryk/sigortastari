@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     siteName: "Sigorta Starı",
     images: [{ url: "/images/logos.png" }],
   },
-  robots: { index: true, follow: true },
+  robots: { index: false, follow: false },
   alternates: { canonical: "https://www.sigortastari.com" },
 };
 
