@@ -136,10 +136,11 @@ export default function ProductsGrid() {
                     className="card-img-top"
                     alt={product.alt}
                     sizes="(max-width: 768px) 100vw, (max-width: 992px) 50vw, 33vw"
+                    style={{ width: "100%", height: "auto" }}
                   />
                 </div>
                 <div className="card-body p-1-6 p-sm-1-9 pt-2-3 position-relative">
-                  <h3 className="h4 mb-3">
+                  <h3 className="h4 mb-3 card-body-title-class" style={{height:"58px"}} >
                     <Link href={`/urunler/${product.slug}`}>
                       {product.name}
                     </Link>

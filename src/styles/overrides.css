@@ -2,6 +2,9 @@
 .quform-elements .row {
   display: flex;
   flex-wrap: wrap;
+  --bs-gutter-x: 0;
+  margin-left: 0;
+  margin-right: 0;
 }
 .quform-elements .col {
   position: relative;
@@ -169,13 +172,17 @@ input[type="checkbox"].kvkkCheck:checked::after {
 }
 
 /* Slider alanı */
+/* Slider wrapper — divider için sabit positioning context (scroll etmez) */
+.blog-slider-outer {
+  position: relative;
+  max-width: 800px;
+  padding-right: 20px;
+  flex: 0 1 auto;
+}
 .blog-slider {
   display: flex;
   align-items: center;
   gap: 5px;
-  max-width: 800px;
-  padding-right: 20px;
-  position: relative;
   overflow-x: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -183,16 +190,15 @@ input[type="checkbox"].kvkkCheck:checked::after {
 .blog-slider::-webkit-scrollbar {
   display: none;
 }
-.blog-slider::after {
-  content: "";
-  width: 2px;
-  height: 100%;
-  background: #272c49;
+/* Sabit dikey ayırıcı — outer'a göre konumlanır, slider scroll etse de yerinden oynamaz */
+.blog-slider-divider {
   position: absolute;
-  right: 15px;
   top: 50%;
+  right: 5px;
   transform: translateY(-50%);
-  flex-shrink: 0;
+  width: 2px;
+  height: 80%;
+  background: #272c49;
   pointer-events: none;
 }
 
@@ -315,12 +321,12 @@ input[type="checkbox"].kvkkCheck:checked::after {
 
 /* ─── Responsive ─── */
 @media (max-width: 1300px) {
-  .blog-slider {
+  .blog-slider-outer {
     max-width: 800px;
   }
 }
 @media (max-width: 1100px) {
-  .blog-slider {
+  .blog-slider-outer {
     max-width: 700px;
   }
 }
@@ -359,9 +365,10 @@ input[type="checkbox"].kvkkCheck:checked::after {
     position: relative;
     padding-inline: 0;
   }
-  .blog-slider::after {
+  .blog-slider-divider {
     display: none;
   }
+  .blog-slider-outer,
   .blog-slider {
     max-width: 470px;
   }

@@ -1,11 +1,12 @@
 "use client";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, EffectFade } from "swiper/modules";
+import { Autoplay, EffectFade, Pagination } from "swiper/modules";
 import Link from "next/link";
 
 import "swiper/css";
 import "swiper/css/effect-fade";
+import "swiper/css/pagination";
 
 const slides = [
   {
@@ -43,10 +44,15 @@ export default function HeroBanner() {
         Starı
       </h1>
       <Swiper
-        modules={[Autoplay, EffectFade]}
+        modules={[Autoplay, EffectFade, Pagination]}
         effect="fade"
         autoplay={{ delay: 5000, disableOnInteraction: false }}
         loop
+        pagination={{
+          clickable: true,
+          renderBullet: (index, className) =>
+            `<span class="${className}"><i>${("0" + (index + 1)).slice(-2)}</i></span>`,
+        }}
         className="min-vh-100 slider-fade2 w-100"
       >
         {slides.map((slide, i) => (

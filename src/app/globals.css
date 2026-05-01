@@ -125,6 +125,72 @@ body {
   background: #E7462C;
 }
 
+/* ─── Hero Banner Pagination (slider-fade2 - owl-dots style) ─── */
+.slider-fade2 .swiper-pagination {
+  position: absolute;
+  bottom: 40px !important;
+  left: auto !important;
+  right: 50px;
+  width: auto !important;
+  text-align: right;
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  z-index: 5;
+}
+.slider-fade2 .swiper-pagination-bullet {
+  position: relative;
+  width: 20px;
+  height: 5px;
+  background: #fff;
+  opacity: 0.5;
+  border-radius: 0;
+  margin: 0 !important;
+  transition: width 0.35s ease-in-out, background 0.3s;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: visible;
+}
+.slider-fade2 .swiper-pagination-bullet i {
+  position: absolute;
+  bottom: 12px;
+  right: 0;
+  font-style: normal;
+  font-family: var(--font-mulish), Mulish, sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.slider-fade2 .swiper-pagination-bullet-active {
+  width: 35px;
+  background: #E7462C;
+  opacity: 1;
+}
+.slider-fade2 .swiper-pagination-bullet-active i {
+  opacity: 1;
+  color: #E7462C;
+}
+.slider-fade2 .swiper-pagination-bullet:hover {
+  background: #E7462C;
+  opacity: 1;
+}
+@media (max-width: 768px) {
+  .slider-fade2 .swiper-pagination {
+    right: 20px;
+    bottom: 20px !important;
+  }
+  .slider-fade2 .swiper-pagination-bullet i {
+    font-size: 1rem;
+    bottom: 8px;
+  }
+}
+
 /* ─── WhatsApp sticky - composite animation ─── */
 .sticky-phone {
   will-change: transform, opacity;

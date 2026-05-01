@@ -34,6 +34,7 @@ export default function AboutSection() {
                 width={570}
                 height={570}
                 sizes="(max-width: 992px) 100vw, 50vw"
+                style={{ width: "100%", height: "auto" }}
               />
               <Image
                 loading="lazy"
@@ -43,6 +44,7 @@ export default function AboutSection() {
                 width={400}
                 height={400}
                 sizes="(max-width: 992px) 100vw, 50vw"
+                style={{ width: "100%", height: "auto" }}
               />
             </div>
           </div>
@@ -72,7 +74,7 @@ export default function AboutSection() {
                     </li>
                   ))}
                 </ul>
-                <div className="hor_1 p-0 resp-tabs-container">
+                <div className="hor_1  resp-tabs-container pt-4 pb-4">
                   <div>{tabs[activeTab].content}</div>
                 </div>
               </div>

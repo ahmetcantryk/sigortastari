@@ -26,7 +26,7 @@ export const productContents: Record<string, ProductContent> = {
     slug: "trafik-sigortasi",
     name: "Trafik Sigortası",
     title: "TRAFİK SİGORTASI",
-    bannerImage: "/images/trafik-bnn.webp",
+    bannerImage: "/images/trafik-bnn.png",
     contentImage: "/images/trafik-sayfaici.webp",
     contentImageAlt: "Trafik Sigortası Görseli",
     metaTitle: "Aracınız İçin Zorunlu Trafik Sigortası | Sigorta Starı",
@@ -102,7 +102,7 @@ export const productContents: Record<string, ProductContent> = {
     slug: "arac-kasko-sigortasi",
     name: "Kasko Sigortası",
     title: "KASKO SİGORTASI",
-    bannerImage: "/images/kasko-bnn.webp",
+    bannerImage: "/images/kasko-bnn.png",
     contentImage: "/images/kasko-sayfaici.webp",
     contentImageAlt: "Kasko Sigortası Görseli",
     metaTitle: "Kasko Sigortası | Sigorta Starı",
@@ -140,6 +140,38 @@ export const productContents: Record<string, ProductContent> = {
         answer:
           "Trafik sigortası zorunludur ve karşı tarafın zararını karşılar. Kasko sigortası ise isteğe bağlıdır ve kendi aracınızın zararını da karşılar.",
       },
+      {
+        question: "Araç Kasko Sigortası Zorunlu Mu?",
+        answer: "Hayır, kasko sigortası Türkiye'de zorunlu değildir. Ancak aracınızı geniş kapsamlı bir şekilde güvence altına almak istiyorsanız, kasko sigortası yaptırmanız önerilir.",
+      },
+      {
+        question: "Kasko Sigortası Neleri Kapsar?",
+        answer: "Kasko sigortası, aracınızın maddi hasarlarını kapsar. Kaza, hırsızlık, doğal afetler, yangın gibi birçok riski teminat altına alır.",
+      },
+      {
+        question: "Kasko Sigortası Neden Önemlidir?",
+        answer: "Kasko sigortası, aracınıza gelebilecek çeşitli risklere karşı maddi güvence sağlar. Hem kaza durumlarında hem de hırsızlık gibi olumsuz durumlarda finansal koruma sunar.",
+      },
+      {
+        question: "Kasko Sigortasının Geniş Kapsamı Nedir?",
+        answer: "Kasko sigortası, aracınızı çeşitli risklere karşı koruyan geniş kapsamlı bir sigorta türüdür. Temel kapsam arasında kaza, yangın, hırsızlık, cam kırılması ve doğal afetler gibi olaylar bulunur. Ayrıca, ek teminatlarla (yüksek hasar bedeli, kiralık araç teminatı vb.) poliçe kapsamı daha da genişletilebilir.",
+      },
+      {
+        question: "Kasko Poliçesini Yenilemek Avantajlı Mıdır?",
+        answer: "Evet, araç kasko poliçesini yenilemek avantajlıdır. Yenileme, mevcut avantajlardan yararlanmanın yanı sıra, aracınıza ekstra koruma eklemenin ve daha uygun fiyatlarla güvence altına almanın bir yoludur. Ayrıca, sürekli sigortalı olmak, olası hasar durumlarında daha güçlü bir maddi koruma sağlar.",
+      },
+      {
+        question: "Hırsızlık Durumunda Kasko Sigortası Nasıl Yardımcı Olur?",
+        answer: "Hırsızlık durumunda kasko sigortası, aracınızın çalınması veya içindeki değerli eşyaların çalınması gibi durumlarla ilgili maddi kayıpları karşılar. Sigorta Starı, poliçe kapsamında belirtilen limitler dahilinde, hırsızlık sonucu oluşan zararları tazmin eder. Böylece, aracınızın güvence altında olmasını sağlar ve finansal kayıplarınızı azaltır.",
+      },
+      {
+        question: "Kasko Sigortası Prim Hesaplama Nasıl Yapılır?",
+        answer: "Prim hesaplamada aracın değeri, kullanım alanı, sürücü bilgileri ve poliçe kapsamı gibi faktörler etkilidir.",
+      },
+      {
+        question: "Kasko Sigortası Fiyatı Ne Kadar?",
+        answer: "Kasko sigortası fiyatları kişiye ve araca göre değişiklik göstermektedir. Size özel sunacağımız kasko sigortası fiyatlarını değerlendirmek için hemen teklif alabilirsiniz.",
+      },
     ],
     offerTitle: "Sigorta Starı'ndan Kasko Sigortası Teklifi Aldınız Mı?",
     offerDescription:
@@ -149,7 +181,7 @@ export const productContents: Record<string, ProductContent> = {
     slug: "konut-sigortasi",
     name: "Konut Sigortası",
     title: "KONUT SİGORTASI",
-    bannerImage: "/images/konut-bn.webp",
+    bannerImage: "/images/konut-bn.png",
     contentImage: "/images/konut-sayfaici.webp",
     contentImageAlt: "Konut Sigortası Görseli",
     metaTitle: "Ev Güvenliğiniz İçin Konut Sigortası | Sigorta Starı",
@@ -182,6 +214,30 @@ export const productContents: Record<string, ProductContent> = {
         answer:
           "Konut sigortası zorunlu değildir ancak evinizi ve eşyalarınızı korumak için yaptırmanız önerilir. DASK (Doğal Afet Sigortaları Kurumu) ise deprem riski için zorunludur.",
       },
+      {
+        question: "Konut Sigortasının Temel Kapsamları Nelerdir?",
+        answer: "Konut sigortası, ev sahiplerini çeşitli risklere karşı koruyan bir sigorta türüdür. Temel kapsamlar arasında yangın, deprem, hırsızlık, su baskını, doğal afetler ve cam kırılması bulunur. Konut sigortası poliçesi, evin değeri ve müşterinin ihtiyaçlarına göre özelleştirilebilir.",
+      },
+      {
+        question: "Su Baskınına Karşı Konut Sigortası Nasıl Koruma Sağlar?",
+        answer: "Konut sigortası, su baskınına karşı da koruma sağlar. Su baskını durumunda oluşan hasarları karşılayabilir. Konut sigortası teminatları; sızan borular, sel, su tesisatı arızaları veya aşırı yağış nedeniyle evde meydana gelen su hasarlarını içermektedir. Poliçe kapsamında belirtilen limitler dahilinde, ev sahibini bu tür maddi kayıplardan korur.",
+      },
+      {
+        question: "Konut (Ev) Sigortası Zorunlu Mu?",
+        answer: "Hayır, konut sigortası Türkiye'de zorunlu değildir. Ancak ev sahiplerini olası risklere karşı korur ve finansal güvence sağlar.",
+      },
+      {
+        question: "Konut Sigortası Prim Hesaplama Nasıl Yapılır?",
+        answer: "Prim hesaplamada evin değeri, konum, kullanım alanı, poliçe kapsamı gibi faktörler etkilidir.",
+      },
+      {
+        question: "Konut Sigortası Neden Önemlidir?",
+        answer: "Konut sigortası, ev sahiplerini maddi hasarlara karşı korur ve olası risklere karşı finansal güvence sağlar. Hem ev hem de ev sahibini güven altına alır.",
+      },
+      {
+        question: "Konut Sigortası Fiyatı Ne Kadar?",
+        answer: "Konut sigortası fiyatları sigorta yaptırılacak konuta göre değişiklik göstermektedir. Size özel sunacağımız konut sigortası fiyatlarını değerlendirmek için hemen teklif alabilirsiniz.",
+      },
     ],
     offerTitle: "Sigorta Starı'ndan Konut Sigortası Teklifi Aldınız Mı?",
     offerDescription:
@@ -191,7 +247,7 @@ export const productContents: Record<string, ProductContent> = {
     slug: "is-yeri-sigortasi",
     name: "İş Yeri Sigortası",
     title: "İŞ YERİ SİGORTASI",
-    bannerImage: "/images/isyeri-bn.webp",
+    bannerImage: "/images/isyeri-bn.png",
     contentImage: "/images/isyeri-sayfaici.webp",
     contentImageAlt: "İş Yeri Sigortası Görseli",
     metaTitle: "Güvenliğiniz İçin İş Yeri Sigortası | Sigorta Starı",
@@ -225,6 +281,30 @@ export const productContents: Record<string, ProductContent> = {
         answer:
           "İş yeri sigortası zorunlu değildir ancak işletmenizi korumak için yaptırmanız şiddetle önerilir.",
       },
+      {
+        question: "İş Yeri Sigortası Poliçesi Nasıl Düzenlenir?",
+        answer: "İş yeri sigortası poliçesi düzenlemek için işverenler sigorta acentesi ile iletişime geçerler. Sigorta acentesi, iş yerinin özelliklerini (yer, sektör, iş hacmi vb.) değerlendirir ve işverenin ihtiyaçlarına uygun bir poliçe teklifi sunar. Poliçe, iş yerinin risklerine ve işverenin taleplerine göre özelleştirilebilir.",
+      },
+      {
+        question: "Çalışanlara İş Yeri Kazalarında İş Yeri Sigortası Nasıl Yardımcı Olur?",
+        answer: "İş yeri sigortası, çalışanlara iş yeri kazalarında maddi ve hukuki yardım sağlar. Sigorta, iş yerinde meydana gelen kaza veya hastalıklar sonucu oluşan tedavi masraflarını karşılar. Ayrıca, çalışanlara ödenen maaş kayıpları ve sürekli sakatlık durumlarında tazminat gibi ek teminatlar da içerebilir. Bu sayede, iş yerinde meydana gelen kazalarda çalışanlar maddi kayıplardan korunmuş olur.",
+      },
+      {
+        question: "İş Yeri Sigortası Prim Hesaplama Nasıl Yapılır?",
+        answer: "Prim hesaplamada iş yerinin büyüklüğü, faaliyet alanı, konumu gibi faktörler etkilidir.",
+      },
+      {
+        question: "İş Yeri Sigortası Neleri Kapsar?",
+        answer: "İş yeri sigortası, iş yerini çeşitli risklere karşı korur. Yangın, hırsızlık, su baskını gibi birçok riski teminat altına alır.",
+      },
+      {
+        question: "İş Yeri Sigortası Neden Önemlidir?",
+        answer: "İş yeri sigortası, iş yerini maddi hasarlara karşı korur ve iş durma sürecindeki gelir kaybını karşılar. Hem iş yeri sahibini hem de iş yerini güven altına alır.",
+      },
+      {
+        question: "İş Yeri Sigortası Fiyatı Ne Kadar?",
+        answer: "İş yeri sigortası fiyatları kişiye göre değişiklik göstermektedir. Size özel sunacağımız iş yeri sigortası fiyatlarını değerlendirmek için hemen teklif alabilirsiniz.",
+      },
     ],
     offerTitle: "Sigorta Starı'ndan İş Yeri Sigortası Teklifi Aldınız Mı?",
     offerDescription:
@@ -234,7 +314,7 @@ export const productContents: Record<string, ProductContent> = {
     slug: "ferdi-kaza-sigortasi",
     name: "Ferdi Kaza Sigortası",
     title: "FERDİ KAZA SİGORTASI",
-    bannerImage: "/images/ferdi-bn.webp",
+    bannerImage: "/images/ferdi-bn.png",
     contentImage: "/images/ferdi-kazasigortasibanner--sayfaici.webp",
     contentImageAlt: "Ferdi Kaza Sigortası Görseli",
     metaTitle: "Ferdi Kaza Sigortası | Sigorta Starı",
@@ -266,6 +346,42 @@ export const productContents: Record<string, ProductContent> = {
         answer:
           "Ferdi kaza sigortası, bireysel olarak veya grup halinde herkese yapılabilir.",
       },
+      {
+        question: "Kaza Durumunda Ferdi Kaza Sigortasının Tazminat Süreci Nasıldır?",
+        answer: "Kaza durumunda ferdi kaza sigortası, sigortalıya belirli bir tazminat ödemesi yapar. Tazminat miktarı, poliçede belirtilen kapsam ve limitlere bağlı olarak değişir. Sigortalı, kaza sonrasında derhal sigorta şirketi ile iletişime geçmeli, olayı bildirmeli ve gerekli belgeleri sunmalıdır. Sigorta şirketi, başvuruyu değerlendirerek uygun tazminatı öder.",
+      },
+      {
+        question: "Ferdi Kaza Sigortası Nedir ve Neden Gereklidir?",
+        answer: "Ferdi Kaza Sigortası, sigortalının ani ve beklenmedik kazalardan kaynaklanan maddi zararları karşılamayı amaçlayan bir sigorta türüdür. Hayatın belirsizlikleri karşısında finansal güvenlik sağlar, sevdiklerinizi maddi açıdan korur.",
+      },
+      {
+        question: "Yoğun Bakım Yatış Teminatı Nasıl Çalışır ve Hangi Durumları Kapsar?",
+        answer: "Yoğun Bakım Yatış Teminatı, COVID-19 hastalığı nedeniyle oluşan yoğun bakım masraflarını karşılamak amacıyla ek teminat olarak sunulur. Bu teminat, harcama belgesine gerek olmadan 30 güne kadar tazminat öder ve ekstra masraflarınıza destek olur.",
+      },
+      {
+        question: "Prim Ödemelerini Nasıl Gerçekleştirebilirim?",
+        answer: "Prim ödemelerinizi kredi kartı ile vade farksız 6 eşit taksitle gerçekleştirebilirsiniz. Bu esnek ödeme seçeneğiyle bütçenizi zorlamadan sigorta poliçenizi düzenleyebilirsiniz.",
+      },
+      {
+        question: "COVID-19 Pandemisiyle İlgili Alınan Ek Teminatlar Nelerdir?",
+        answer: "Pandemi döneminde Ferdi Kaza Sigortası ile Yoğun Bakım Yatış Teminatını ilave olarak alabilirsiniz. Bu teminatlar, COVID-19 hastalığı kaynaklı masraflarınıza ve iş kaybınıza destek olmayı amaçlar.",
+      },
+      {
+        question: "Teminat Seçenekleri ve Prim Bilgileri Nelerdir?",
+        answer: "Ferdi Kaza Sigortası, farklı teminat seçenekleri sunar. Örneğin, 10 yıl boyunca aylık 3.000 TL, 5.000 TL veya 8.000 TL ödeme teminatlarına sahip olabilirsiniz. Primler yıllık bazda belirlenir ve her yıl TÜFE oranında artırılır.",
+      },
+      {
+        question: "Ferdi Kaza Sigortasının Genel Şartları Nelerdir?",
+        answer: "Genel şartlar, sigorta kapsamını, istisnaları ve poliçe detaylarını içerir. Ferdi kaza sigortasının şeffaf ve anlaşılır bir şekilde sunulması için genel şartlara özel bir önem verir.",
+      },
+      {
+        question: "Ferdi Kaza Sigortasının Başvuru Süreci Nasıl İşler Ve Ne Kadar Sürede Poliçe Düzenlenir?",
+        answer: "Başvuru süreciniz hızlı bir şekilde tamamlanır. Sigorta Starı, uzman kadrosu ile başvurunuzu hızla değerlendirir ve en kısa sürede poliçenizi düzenler. Bu sayede sigortanızı kolayca yaptırabilir ve güvence altına alabilirsiniz.",
+      },
+      {
+        question: "Ferdi Kaza Sigortası Fiyatı Ne Kadar?",
+        answer: "Ferdi Kaza Sigortası fiyatları kişiye göre değişiklik göstermektedir. Size özel sunacağımız ferdi kaza sigortası fiyatlarını değerlendirmek için hemen teklif alabilirsiniz.",
+      },
     ],
     offerTitle: "Sigorta Starı'ndan Ferdi Kaza Sigortası Teklifi Aldınız Mı?",
     offerDescription:
@@ -275,7 +391,7 @@ export const productContents: Record<string, ProductContent> = {
     slug: "mesleki-sorumluluk-sigortasi",
     name: "Mesleki Sorumluluk Sigortası",
     title: "MESLEKİ SORUMLULUK SİGORTASI",
-    bannerImage: "/images/mesleki-bn.webp",
+    bannerImage: "/images/mesleki-bn.png",
     contentImage: "/images/meslekisorumluluk--sayfaici.webp",
     contentImageAlt: "Mesleki Sorumluluk Sigortası Görseli",
     metaTitle: "Mali Koruma İçin Mesleki Sorumluluk Sigortası | Sigorta Starı",
@@ -306,6 +422,30 @@ export const productContents: Record<string, ProductContent> = {
         answer:
           "Doktorlar, avukatlar, muhasebeciler, mühendisler ve diğer meslek grupları için mesleki sorumluluk sigortası yapılabilir.",
       },
+      {
+        question: "Mesleki Sorumluluk Sigortası Nedir?",
+        answer: "Mesleki Sorumluluk Sigortası, profesyonellerin yaptıkları işlemlerden kaynaklanabilecek maddi zararları karşılamak amacıyla tasarlanmış bir sigorta türüdür.",
+      },
+      {
+        question: "Kimler Mesleki Sorumluluk Sigortası Yaptırmalı?",
+        answer: "Mesleki faaliyetlerde bulunan doktorlar, avukatlar, mühendisler, danışmanlar ve diğer profesyoneller, yaptıkları işlemlerden kaynaklanabilecek hukuki risklere karşı bu sigortayı yaptırmalıdır.",
+      },
+      {
+        question: "Teminatlar Neleri Kapsar?",
+        answer: "Mesleki Sorumluluk Sigortası, hatalı hizmet, yanlış danışmanlık, ihmal ve diğer mesleki hatalar nedeniyle ortaya çıkabilecek maddi kayıpları ve hukuki sorumlulukları içerir.",
+      },
+      {
+        question: "Sigorta Primleri Nasıl Belirlenir?",
+        answer: "Sigorta primleri, sigortalının mesleki risk düzeyine, iş hacmine ve sigorta teminatlarına göre belirlenir. Sigorta şirketi tarafından yapılan bir değerlendirme sonucunda prim hesaplanır.",
+      },
+      {
+        question: "Mesleki Sorumluluk Sigortasının Kapsamı Geniş Midir?",
+        answer: "Evet, mesleki sorumluluk sigortası genellikle geniş kapsamlı bir sigorta türüdür. Temel olarak, sigorta poliçesi, sigortalının mesleki faaliyetleri sırasında meydana gelebilecek maddi zararları, hataları, ihmal veya yetersizlikleri kapsar. Poliçe kapsamı, seçilen teminatlara ve sigorta şirketinin politikalarına bağlı olarak değişebilir.",
+      },
+      {
+        question: "Mesleki Sorumluluk Sigortası Fiyatı Ne Kadar?",
+        answer: "Mesleki sorumluluk sigortası fiyatları kişiye göre değişiklik göstermektedir. Size özel sunacağımız mesleki sorumluluk sigortası fiyatlarını değerlendirmek için hemen teklif alabilirsiniz.",
+      },
     ],
     offerTitle:
       "Sigorta Starı'ndan Mesleki Sorumluluk Sigortası Teklifi Aldınız Mı?",
@@ -316,7 +456,7 @@ export const productContents: Record<string, ProductContent> = {
     slug: "nakliyat-sigortasi",
     name: "Nakliyat Sigortası",
     title: "NAKLİYAT SİGORTASI",
-    bannerImage: "/images/nakliyat-bn.webp",
+    bannerImage: "/images/nakliyat-bn.png",
     contentImage: "/images/nakliyat-sigortasi-banner--sayfaici.webp",
     contentImageAlt: "Nakliyat Sigortası Görseli",
     metaTitle: "Eşyalarınız İçin Nakliyat Sigortası | Sigorta Starı",
@@ -348,6 +488,30 @@ export const productContents: Record<string, ProductContent> = {
         answer:
           "Nakliyat sigortası zorunlu değildir ancak taşınan mallarınızı korumak için yaptırmanız önerilir.",
       },
+      {
+        question: "Poliçe Başlangıç Tarihinden Önce Var Olan Eşyaların Değeri Nasıl Belirlenir?",
+        answer: "Nakliyat sigortası poliçesi başlangıç tarihinden önce var olan eşyaların değeri, taşıma öncesi bir ekspertiz değerlendirmesi ile belirlenir. Bu değerleme, eşyaların türü, miktarı ve değeri dikkate alınarak yapılır.",
+      },
+      {
+        question: "Taşınan Eşyaların Değeri Nasıl Belirlenir?",
+        answer: "Taşınan eşyaların değeri, taşıma öncesi bir değerleme süreci ile belirlenir. Eşyaların cinsine, miktarına ve değerine göre bir ekspertiz değerlendirmesi yapılır.",
+      },
+      {
+        question: "Harp Teminatı Nedir ve Ek Bir Güvence Midir?",
+        answer: "Harp Teminatı, nakliyat sigortasına eklenen bir opsiyoneldir ve taşıma sırasında oluşabilecek harp durumlarına karşı ek bir güvence sağlar. Bu teminat, poliçe sahibinin talebine bağlı olarak eklenir ve ek bir prim ödemesi gerektirir.",
+      },
+      {
+        question: "Nakliyat Sigortasının Taşıma Sürecindeki Önemi Nedir?",
+        answer: "Nakliyat sigortası, taşıma sürecinde meydana gelebilecek risklere karşı önemli bir koruma sağlar. Taşınan eşyaların çeşitli risklere maruz kalabileceği durumlarda bu eşyaların kaybı, hasarı veya zarar görmesi durumunda maddi koruma sunar. Bu sayede, taşıma sürecinde olası maddi kayıpları önleyerek güvenli bir taşıma süreci sağlar.",
+      },
+      {
+        question: "Nakliyat Sigortasının Kapsamına Hangi Durumlar Dahildir?",
+        answer: "Sigorta kapsamındaki her ürünün gemi batması, fırtına, karaya vurma gibi olaylara karşı korunmasını temin eder. Ayrıca, gemide ortaya çıkan yangınlar ve eşya transferi sırasında gerçekleşen kazalar da poliçe kapsamında değerlendirilir.",
+      },
+      {
+        question: "Nakliyat Sigortası Fiyatı Ne Kadar?",
+        answer: "Nakliyat sigortası fiyatları kişiye göre değişiklik göstermektedir. Size özel sunacağımız özel nakliyat sigortası fiyatlarını değerlendirmek için hemen teklif alabilirsiniz.",
+      },
     ],
     offerTitle: "Sigorta Starı'ndan Nakliyat Sigortası Teklifi Aldınız Mı?",
     offerDescription:
@@ -357,7 +521,7 @@ export const productContents: Record<string, ProductContent> = {
     slug: "tamamlayici-saglik-sigortasi",
     name: "Tamamlayıcı Sağlık Sigortası",
     title: "TAMAMLAYICI SAĞLIK SİGORTASI",
-    bannerImage: "/images/tss-bn.webp",
+    bannerImage: "/images/tss-bn.png",
     contentImage: "/images/TSS--sayfaici.webp",
     contentImageAlt: "Tamamlayıcı Sağlık Sigortası Görseli",
     metaTitle: "En Kapsamlı Tamamlayıcı Sağlık Sigortası | Sigorta Starı",
@@ -390,6 +554,34 @@ export const productContents: Record<string, ProductContent> = {
         answer:
           "Evet, tamamlayıcı sağlık sigortasından yararlanmak için aktif SGK kaydınızın olması gerekmektedir.",
       },
+      {
+        question: "Tamamlayıcı Sağlık Sigortasının (TSS) Avantajları Nelerdir?",
+        answer: "Tamamlayıcı sağlık sigortası, standart sağlık sigortası poliçelerinin ötesinde ek avantajlar sunmaktadır. Bu avantajlar arasında özel hastane seçeneği, refakatçi, ilave tetkikler, yurt dışı tedaviler, yatarak tedavi teminatı, ve daha birçok özel hizmet bulunur. Tamamlayıcı poliçe, sağlık hizmetlerinden daha geniş bir şekilde yararlanmanızı sağlar.",
+      },
+      {
+        question: "Sigorta Başlangıcından Önceki Sağlık Sorunları Kapsama Dahil Edilir Mi?",
+        answer: "Poliçe başlangıç tarihinden önce var olan sağlık sorunları, tamamlayıcı sağlık sigortası kapsamı dışındadır. Önceden mevcut olan hastalıklarınızla ilgili doktor muayeneleri, tanı testleri ve diğer işlemler, poliçe devreye girmeden önceki döneme ait olduğu için bu maliyetleri tamamlayıcı sağlık sigortası ile karşılayamazsınız.",
+      },
+      {
+        question: "Tamamlayıcı Sağlık Sigortası Zorunlu Mu?",
+        answer: "Hayır, tamamlayıcı sağlık sigortası Türkiye'de zorunlu değildir. Ancak zorunlu sağlık sigortası kapsamının dışında kalan masraflarınızı karşılamak için tercih edilebilir.",
+      },
+      {
+        question: "Prim Hesaplama Nasıl Yapılır?",
+        answer: "Prim hesaplamada yaş, cinsiyet, sağlık durumu, teminat seçenekleri gibi faktörler etkilidir. Sigorta prim hesaplama aracımızı kullanarak kolayca fiyat teklifi alabilirsiniz.",
+      },
+      {
+        question: "Tamamlayıcı Sağlık Sigortası Neleri Kapsar?",
+        answer: "Tamamlayıcı sağlık sigortası, zorunlu sağlık sigortası kapsamında olmayan veya sınırlı kalan sağlık hizmetlerini kapsar. Belirnenen teminatlara göre muayene, tedavi, ilaç masrafları, diş tedavileri gibi birçok alanı içerebilmektedir.",
+      },
+      {
+        question: "Tamamlayıcı Sağlık Sigortası Hangi Hastanelerde Geçerli?",
+        answer: "Tamamlayıcı sağlık sigortası geniş bir hastane ağına sahiptir. Sigorta şirketinizin anlaşmalı olduğu özel hastaneler, poliklinikler ve anlaşmalı sağlık kuruluşlarından hizmet alabilirsiniz.",
+      },
+      {
+        question: "Tamamlayıcı Sağlık Sigortası Fiyatı Ne Kadar?",
+        answer: "Tamamlayıcı sağlık sigortası fiyatları kişiye ve belirlenen teminatlara göre değişiklik göstermektedir. Size özel sunacağımız tamamlayıcı sağlık sigortası fiyatlarını değerlendirmek için hemen teklif alabilirsiniz.",
+      },
     ],
     offerTitle:
       "Sigorta Starı'ndan Tamamlayıcı Sağlık Sigortası Teklifi Aldınız Mı?",
@@ -400,7 +592,7 @@ export const productContents: Record<string, ProductContent> = {
     slug: "yabanci-uyruklular-icin-saglik-sigortasi",
     name: "Yabancı Uyruklular İçin Sağlık Sigortası",
     title: "YABANCI UYRUKLULAR İÇİN SAĞLIK SİGORTASI",
-    bannerImage: "/images/yabanci-bn.webp",
+    bannerImage: "/images/yabanci-bn.png",
     contentImage: "/images/yabancisaglik-sayfaici.webp",
     contentImageAlt: "Yabancı Uyruklular İçin Sağlık Sigortası Görseli",
     metaTitle: "Yabancı Uyruklular İçin Sağlık Sigortası | Sigorta Starı",
@@ -432,6 +624,34 @@ export const productContents: Record<string, ProductContent> = {
         answer:
           "Evet, Türkiye'de ikamet izni başvurusu yapan yabancı uyruklular için sağlık sigortası zorunludur.",
       },
+      {
+        question: "2 Yıllık Yabancı Sağlık Sigortası Yapılabilir Mi?",
+        answer: "Sigorta şirketleri genellikle poliçeyi yıllık olarak düzenler. Poliçe kapsamındaki teminatlar, poliçe süresince geçerlidir ve genellikle 1 yıl ile sınırlıdır. Ancak bazı sigorta şirketleri, talep doğrultusunda 2 yıllık yabancı sağlık sigortası da sunabilmektedir. Sigorta süresini uzatmak mümkündür, ancak 2 yıl geçerli olan yabancı sağlık sigortası için teklif alırken detaylı bilgi alınması önerilir.",
+      },
+      {
+        question: "Yabancı İkamet Sağlık Sigortası Kimler İçin Zorunlu Değildir?",
+        answer: "Türkiye Cumhuriyeti vatandaşları ile mavi kart sahipleri, yurt dışında ikamet etmeleri durumunda Türkiye'de ikamet etmek için yabancı sağlık sigortası yaptırmak zorunda değillerdir. \"Mavi Kart nedir?\" sorusuna gelince, Türkiye Cumhuriyeti vatandaşları tarafından terk edilen kişilere verilen bir statüdür. Vatandaşlıktan çıkanlar, mavi kart ile askerlik yapma veya seçme ve seçilebilme gibi bazı haklardan muaf tutulur, ancak diğer haklardan yararlanabilirler.",
+      },
+      {
+        question: "Yabancı Sağlık Sigortası Nasıl İptal Edilir?",
+        answer: "Yabancı sağlık sigortası iki durumda iptal edilebilir. Birincisi, yabancı uyrukluların Türkiye'de ikamet ederken SGK'ya dahil olmaları durumunda sigortayı iptal etme hakları vardır. İkinci durum ise yabancı uyrukluların oturma izni almasıdır. Oturma izni alan kişiler, özel sağlık sigortası yaptırdıktan sonra sigorta şirketine başvurarak yabancı sağlık sigortasını iptal ettirebilirler.\n\nAncak iptal işlemleri, yabancı uyruklu kişinin inisiyatifindedir. Kişiler istedikleri takdirde iptal hakkını kullanabilir veya iki farklı sigortanın sağladığı güvencelerden yararlanabilirler.",
+      },
+      {
+        question: "Yabancı Uyruklular İçin Sağlık Sigortası Zorunlu Mu?",
+        answer: "Türkiye'ye çalışma, öğrenim veya ikamet amacıyla gelen yabancı uyruklular için zorunlu değildir, ancak ikamet izni başvurusu yaparken talep edilebilir.",
+      },
+      {
+        question: "İkamet İzni Başvurusunda Hangi Belgeler Gereklidir?",
+        answer: "Sağlık sigortası poliçesi, ikamet izni başvurusu yapacak olan yabancı uyrukluların talep edilen belgeler arasında yer alır.\n\n• İkamet izni başvuru formu,\n• Pasaport veya yerine geçen bir belgenin aslı ve fotokopisi,\n• 4 adet biyometrik (ICAO standartlarında) fotoğraf,\n• Sağlık sigortası,\n• Adli sicil kaydı,\n• İkamet izni boyunca yetecek miktarda maddi imkanını ispatlar belgeler.",
+      },
+      {
+        question: "Sağlık Sigortası Primi Nasıl Hesaplanır?",
+        answer: "Prim hesaplaması, sigortalının yaşı, sağlık durumu, poliçe süresi gibi faktörlere bağlı olarak yapılır. Prim ödeme koşulları poliçe süresi boyunca düzenli olarak ödenir.",
+      },
+      {
+        question: "Yabancı Uyruklular İçin Sağlık Sigortası Fiyatı Ne Kadar?",
+        answer: "Yabancı uyruklular için sağlık sigortası fiyatları kişiye göre değişiklik göstermektedir. Size özel sunacağımız yabancı sağlık sigortası fiyatlarını değerlendirmek için hemen teklif alabilirsiniz.",
+      },
     ],
     offerTitle:
       "Sigorta Starı'ndan Yabancı Sağlık Sigortası Teklifi Aldınız Mı?",
@@ -442,7 +662,7 @@ export const productContents: Record<string, ProductContent> = {
     slug: "ozel-saglik-sigortasi",
     name: "Özel Sağlık Sigortası",
     title: "ÖZEL SAĞLIK SİGORTASI",
-    bannerImage: "/images/ozel-bn.webp",
+    bannerImage: "/images/ozel-bn.png",
     contentImage: "/images/%C3%B6zel-saglik-safaici.webp",
     contentImageAlt: "Özel Sağlık Sigortası Görseli",
     metaTitle: "En Kapsamlı Özel Sağlık Sigortası | Sigorta Starı",
@@ -476,6 +696,30 @@ export const productContents: Record<string, ProductContent> = {
         answer:
           "TSS, SGK güvencesi altındaki kişiler için ek bir koruma sağlarken, ÖSS SGK'dan bağımsız olarak kapsamlı sağlık güvencesi sunar.",
       },
+      {
+        question: "Özel Sağlık Sigortasının Öne Çıkan Hizmetleri Nelerdir?",
+        answer: "Özel sağlık sigortası, anlaşmalı hastaneler, doktor muayenehaneleri, poliklinikler ve fizik tedavi merkezlerinden geniş kapsamlı sağlık kontrolü, tanı ve tedavi hizmetleri almanızı mümkün kılar. Poliçe kapsamında yer alması ve anlaşmalı eczanelerle ilişkili olması şartıyla, ilaçlarını ücretsiz veya düşük bir ücretle temin etme imkanına sahip olabilirsiniz.",
+      },
+      {
+        question: "Özel Sağlık Sigortası (ÖSS) ve Tamamlayıcı Sağlık Sigortası (TSS) Farkı Nedir?",
+        answer: "Tamamlayıcı sağlık sigortası (TSS) yurt dışında geçerli değildir, ancak özel sağlık sigortası (ÖSS) ile genişletilmiş teminatlar dahilinde yurt dışında da sağlık hizmetinden faydalanabilirsiniz. ÖSS'nin hastane ağı daha geniştir çünkü TSS, sadece SGK anlaşmalı özel hastanelerde geçerlidir. ÖSS, anlaşmalı hastane ağında SGK anlaşma zorunluluğu olmadan daha fazla özel hastaneyi kapsayabilir.\n\nTSS, özel hastanelerde geçerliyken, ÖSS anlaşmalı doktor kapsamı üzerinden özel muayenehanelerde de geçerlidir. ÖSS poliçesi, anlaşması olan doktorlardan sadece hastane kapsamında değil, özel muayenehanelerinde de sağlık hizmeti alınmasına olanak tanır. Ayrıca, ÖSS anlaşması olmayan doktorlar için bazı indirim avantajları sunabilir.\n\nÖSS'de 60 yaş altındaki herkes sigorta yaptırabilirken, TSS'de bu yaş sınırı 55'tir. TSS'de sadece 15 TL katılım ücreti ödenirken, ÖSS'de sağlık hizmetleri teminatlar dahilinde belirlenen oranda (örneğin %80) karşılanır ve kalan ücreti senin ödemen gerekir. TSS prim ödemeleri, ÖSS'ye göre genellikle daha düşüktür. TSS'den faydalanmak için SGK'lı olmak gerekir, ancak ÖSS yaptırmak için böyle bir gereklilik bulunmaz.",
+      },
+      {
+        question: "Poliçe Başvurusu Sırasında Sağlık Durumu Nasıl Değerlendirilir?",
+        answer: "Poliçe başvurusu sırasında sağlık durumu sigortalının yaşına ve geçmiş sağlık geçmişine göre değerlendirilir. Sigorta şirketi, risk durumuna bağlı olarak prim teklifi sunar.",
+      },
+      {
+        question: "Özel Sağlık Sigortası Primleri Nasıl Belirlenir?",
+        answer: "Prim hesaplaması, sigortalının yaşına, cinsiyetine, sağlık durumuna, poliçe kapsamına ve seçeneklere bağlı olarak yapılır. Sigorta şirketleri, online platformlarında veya acenteleri aracılığıyla prim hesaplama hizmeti sunar.",
+      },
+      {
+        question: "Acil Durumlar İçin Özel Sağlık Sigortası Ne Gibi Kolaylıklar Sunar?",
+        answer: "Özel sağlık sigortası, acil durumlarda hızlı müdahale, özel hastanelerde yüksek standartlarda hizmet ve acil operasyon masraflarını karşılamak gibi avantajlar sunar.",
+      },
+      {
+        question: "Özel Sağlık Sigortası Fiyatı Ne Kadar?",
+        answer: "Özel sağlık sigortası fiyatları kişiye ve teminatlara göre değişiklik göstermektedir. Size özel sunacağımız özel sağlık sigortası fiyatlarını değerlendirmek için hemen teklif alabilirsiniz.",
+      },
     ],
     offerTitle:
       "Sigorta Starı'ndan Özel Sağlık Sigortası Teklifi Aldınız Mı?",
@@ -486,7 +730,7 @@ export const productContents: Record<string, ProductContent> = {
     slug: "seyahat-saglik-sigortasi",
     name: "Seyahat Sağlık Sigortası",
     title: "SEYAHAT SAĞLIK SİGORTASI",
-    bannerImage: "/images/seyahat-bnn.webp",
+    bannerImage: "/images/seyahat-bnn.png",
     contentImage: "/images/seyahat-saglik.webp",
     contentImageAlt: "Seyahat Sağlık Sigortası Görseli",
     metaTitle: "En Uygun ve Kapsamlı Seyahat Sağlık Sigortası | Sigorta Starı",
@@ -518,6 +762,34 @@ export const productContents: Record<string, ProductContent> = {
         question: "Schengen Vizesi İçin Seyahat Sigortası Zorunlu mu?",
         answer:
           "Evet, Schengen vizesi başvurusu için en az 30.000 Euro teminatlı seyahat sağlık sigortası zorunludur.",
+      },
+      {
+        question: "Seyahat Sağlık Sigortası Neden Önemlidir?",
+        answer: "Seyahat sağlık sigortası, yurt dışında beklenmedik sağlık sorunlarına karşı mali güvence sağlar ve seyahat edenleri olası mali risklerden korur.",
+      },
+      {
+        question: "Seyahat İptali Teminatı Nedir?",
+        answer: "Seyahat iptali teminatı, beklenmedik durumlar nedeniyle seyahatinizin iptal edilmesi durumunda ortaya çıkabilecek masrafları karşılar. Hastalık, kaza veya vize reddi gibi durumları kapsar. Bu durumlar sigorta şirketlerine göre değişiklik gösterebilir.",
+      },
+      {
+        question: "Seyahat Sigortası Zorunlu Mu?",
+        answer: "Türkiye'den yurt dışına seyahat edenler için zorunlu değildir, ancak birçok ülkenin vize başvurularında seyahat sağlık sigortası talep ettiği unutulmamalıdır.",
+      },
+      {
+        question: "Prim Ödeme Koşulları Nasıl Belirlenir?",
+        answer: "Prim hesaplaması, seyahatin süresi, seyahat edilen ülke, sigortalının yaşı gibi faktörlere bağlı olarak yapılır. Prim ödeme koşulları poliçe süresi boyunca düzenli olarak ödenir.",
+      },
+      {
+        question: "Yurt Dışında Acil Sağlık Durumlarında Nasıl Destek Alabilirim?",
+        answer: "Seyahat sağlık sigortası, yurt dışında acil sağlık durumlarında sigortalıya birçok destek sunar. Sigorta şirketi, sigortalının bulunduğu bölgede anlaşmalı olduğu hastaneler ve doktorlarla iletişim kurarak acil müdahaleyi sağlar. Ayrıca, 7/24 acil yardım hattı aracılığıyla sigortalıya rehberlik ve destek hizmeti sunar.",
+      },
+      {
+        question: "Seyahat Sağlık Sigortası Kapsamında Spor Etkinlikleri Sigortalanır Mı?",
+        answer: "Evet, çoğu seyahat sağlık sigortası poliçesi, spor etkinliklerini kapsar. Ancak, poliçe üzerinde belirtilen kapsam ve limitlere dikkat edilmelidir. Bazı tehlikeli sporlar veya yüksek riskli etkinlikler, standart poliçe kapsamı dışında olabilir. Bu nedenle, sigortalı spor etkinliklerini kapsayan bir poliçe seçerken detaylı inceleme yapmalıdır.",
+      },
+      {
+        question: "Seyahat Sağlık Sigortası Fiyatı Ne Kadar?",
+        answer: "Seyahat sağlık sigortası fiyatları kişiye göre değişiklik göstermektedir. Size özel sunacağımız seyahat sağlık sigortası fiyatlarını değerlendirmek için hemen teklif alabilirsiniz.",
       },
     ],
     offerTitle:

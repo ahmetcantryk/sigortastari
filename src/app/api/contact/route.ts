@@ -165,7 +165,7 @@ export async function POST(request: NextRequest) {
 
     const mailOk =
       mailResult.status === "fulfilled" && mailResult.value.success;
-    const dbOk =
+    let dbOk =
       supabaseResult.status === "fulfilled" &&
       !supabaseResult.value.error &&
       !!supabaseResult.value.data?.id;
@@ -184,13 +184,56 @@ export async function POST(request: NextRequest) {
         supabaseResult.status === "rejected"
           ? supabaseResult.reason
           : supabaseResult.value.error;
-      console.error("[contact] supabase kaydedilemedi:", reason);
+      console.error("[contact] supabase (anon) kaydedilemedi:", reason);
     }
 
-    // DB başarılıysa mail durumunu UPDATE et (service role - RLS bypass)
-    if (dbOk && supabaseResult.status === "fulfilled") {
+    // FALLBACK: anon insert başarısızsa service role ile dene (RLS bypass)
+    let insertedId: string | null =
+      dbOk && supabaseResult.status === "fulfilled"
+        ? (supabaseResult.value.data!.id as string)
+        : null;
+
+    if (!dbOk) {
       try {
-        const insertedId = supabaseResult.value.data!.id as string;
+        const admin = getSupabaseAdmin();
+        const { data: adminInsert, error: adminErr } = await admin
+          .from("contact_submissions")
+          .insert({
+            name_surname: sanitized.nameSurname,
+            email: sanitized.email,
+            phone: sanitized.phone,
+            subject: sanitized.subject,
+            message: sanitized.message,
+            kvkk_accepted: true,
+            ip_address: clientIp,
+            user_agent: request.headers.get("user-agent") ?? null,
+            source_path: sourcePath,
+            mail_sent: mailOk,
+            mail_error: mailOk ? null : mailErrorMsg?.slice(0, 1000) ?? null,
+            mail_sent_at: mailOk ? new Date().toISOString() : null,
+          })
+          .select("id")
+          .single();
+        if (!adminErr && adminInsert?.id) {
+          dbOk = true;
+          insertedId = adminInsert.id as string;
+          console.warn("[contact] supabase service-role fallback başarılı");
+        } else {
+          console.error("[contact] supabase service-role da başarısız:", adminErr);
+        }
+      } catch (e) {
+        console.error("[contact] supabase service-role exception:", e);
+      }
+    }
+
+    // DB başarılıysa (anon yoluyla insert edildiyse) mail durumunu UPDATE et
+    // (Service role fallback insert ettiyse mail_sent zaten yazıldı)
+    const wasAnonInsert =
+      supabaseResult.status === "fulfilled" &&
+      !supabaseResult.value.error &&
+      !!supabaseResult.value.data?.id;
+    if (dbOk && insertedId && wasAnonInsert) {
+      try {
         const admin = getSupabaseAdmin();
         const { error: updateErr } = await admin
           .from("contact_submissions")

@@ -144,7 +144,6 @@ export default function HakkimizdaPage() {
                   her anınızı yıldızlarla aydınlatarak, sizi güvenle geleceğe
                   taşımayı amaçlar. Hayatınızın her anında yanınızda olan bir
                   sigorta partnerine sahip olmak için{" "}
-                  <br />
                   <strong>
                     <Link href="/urunler">hemen ürünlerimizi inceleyin!</Link>
                   </strong>

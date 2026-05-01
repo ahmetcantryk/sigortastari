@@ -91,12 +91,13 @@ export default function Header() {
                                 className={`submenu-button-2 offical${submenuOpen ? " active" : ""}`}
                                 onClick={(e) => {
                                   e.preventDefault();
+                                  e.stopPropagation();
                                   setSubmenuOpen(!submenuOpen);
                                 }}
                               ></span>
                               <Link href="/urunler" onClick={closeMobile}>Ürünler</Link>
 
-                              <ul className="row megamenu sub-menu-s" style={mobileMenuOpen && submenuOpen ? { display: "block" } : undefined}>
+                              <ul className={`row megamenu sub-menu-s${submenuOpen ? " open" : ""}`}>
                                 <li className="col-lg-3 has-sub">
                                   <ul className="sub-menu-s">
                                     <li><Link href="/urunler/trafik-sigortasi" onClick={closeMobile}>Trafik Sigortası</Link></li>

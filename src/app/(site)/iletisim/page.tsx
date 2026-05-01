@@ -107,7 +107,7 @@ export default function IletisimPage() {
                       </div>
                       <div className="flex-grow-1 ms-3">
                         <h4 className="h5">E-posta Adresi</h4>
-                        <span className="d-block">
+                        <span className="d-block" style={{ fontSize: 14 }}>
                           <Link href="mailto:sigorta@sigortastari.com">
                             sigorta@sigortastari.com
                           </Link>

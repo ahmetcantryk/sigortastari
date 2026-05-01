@@ -82,19 +82,22 @@ export default function BlogFilterBar({ posts, categories }: Props) {
           <span>Tümü</span>
         </div>
 
-        {/* Desktop: Slider + Search wrapper */}
+        {/* Desktop slider + mobile toggle wrapper */}
         <div className="w-100">
-          {/* Desktop: Kategori slider */}
-          <div className="blog-slider lg-none" ref={sliderRef}>
-            {categories.map((cat) => (
-              <div
-                key={cat.id}
-                className={`badge-box${activeCategory === cat.id ? " active" : ""}`}
-                onClick={() => handleCategoryClick(cat.id)}
-              >
-                <span>{cat.name}</span>
-              </div>
-            ))}
+          {/* Desktop: Kategori slider — divider sabit kalır */}
+          <div className="blog-slider-outer lg-none">
+            <div className="blog-slider" ref={sliderRef}>
+              {categories.map((cat) => (
+                <div
+                  key={cat.id}
+                  className={`badge-box${activeCategory === cat.id ? " active" : ""}`}
+                  onClick={() => handleCategoryClick(cat.id)}
+                >
+                  <span>{cat.name}</span>
+                </div>
+              ))}
+            </div>
+            <div className="blog-slider-divider" aria-hidden="true" />
           </div>
 
           {/* Mobile: Toggle dropdown */}
@@ -130,8 +133,8 @@ export default function BlogFilterBar({ posts, categories }: Props) {
             )}
           </div>
 
-          {/* Desktop: Arama */}
-          <div className="input-box mob lg-none">
+          {/* Mobile: Search açıldığında bu kutu doldurulur */}
+          <div className={`input-box mob d-lg-none${mobileSearchOpen ? " open" : ""}`}>
             <input
               type="text"
               className="search-style"
@@ -145,8 +148,8 @@ export default function BlogFilterBar({ posts, categories }: Props) {
           </div>
         </div>
 
-        {/* Mobile: Arama ikonu */}
-        <div className="input-box mob lg-none" style={{ display: mobileSearchOpen ? "block" : undefined }}>
+        {/* Desktop: Sağ taraf arama */}
+        <div className="input-box lg-none">
           <input
             type="text"
             className="search-style"
@@ -158,6 +161,8 @@ export default function BlogFilterBar({ posts, categories }: Props) {
             }}
           />
         </div>
+
+        {/* Mobile: Arama ikonu */}
         <div
           className="search-toggle d-lg-none"
           onClick={() => {
@@ -168,24 +173,6 @@ export default function BlogFilterBar({ posts, categories }: Props) {
           <i className="fa-solid fa-magnifying-glass"></i>
         </div>
       </div>
-
-      {/* Mobile search açıkken */}
-      {mobileSearchOpen && (
-        <div className="d-lg-none" style={{ marginBottom: 20, paddingInline: 20 }}>
-          <input
-            type="text"
-            className="search-style"
-            placeholder="Blog Arayın..."
-            value={searchQuery}
-            onChange={(e) => {
-              setSearchQuery(e.target.value);
-              setCurrentPage(1);
-            }}
-            style={{ width: "100%" }}
-            autoFocus
-          />
-        </div>
-      )}
 
       {/* Blog Kartları */}
       <div className="row g-xl-5 mt-n2-9">

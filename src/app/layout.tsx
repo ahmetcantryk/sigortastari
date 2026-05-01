@@ -52,7 +52,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="tr" className={`${openSans.variable} ${mulish.variable}`}>
+    <html lang="tr" data-scroll-behavior="smooth" className={`${openSans.variable} ${mulish.variable}`}>
       <body>{children}</body>
     </html>
   );

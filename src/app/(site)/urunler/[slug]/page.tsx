@@ -8,6 +8,22 @@ import {
   getProductContent,
 } from "@/lib/product-content";
 import ProductDetailClient from "./ProductDetailClient";
+import ProductFaq from "./ProductFaq";
+import { getPostsByCategory, formatDate } from "@/lib/blog";
+
+const PRODUCT_TO_CATEGORY: Record<string, string> = {
+  "trafik-sigortasi": "trafik",
+  "arac-kasko-sigortasi": "kasko",
+  "konut-sigortasi": "konut",
+  "is-yeri-sigortasi": "is-yeri",
+  "ferdi-kaza-sigortasi": "ferdi-kaza",
+  "mesleki-sorumluluk-sigortasi": "mesleki-sorumluluk",
+  "nakliyat-sigortasi": "nakliyat",
+  "tamamlayici-saglik-sigortasi": "tamamlayici-saglik",
+  "yabanci-uyruklular-icin-saglik-sigortasi": "yabanci-saglik",
+  "ozel-saglik-sigortasi": "ozel-saglik",
+  "seyahat-saglik-sigortasi": "seyahat-saglik",
+};
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -83,6 +99,12 @@ export default async function ProductDetailPage({ params }: PageProps) {
     productNames[key] = productContents[key].name;
   }
 
+  // İlgili kategorinin en yeni 3 blog yazısı
+  const categorySlug = PRODUCT_TO_CATEGORY[slug];
+  const blogPosts = categorySlug
+    ? (await getPostsByCategory(categorySlug)).slice(0, 3)
+    : [];
+
   return (
     <>
       <style
@@ -104,11 +126,11 @@ section { overflow: unset !important; }
             src={content.bannerImage}
             alt={`${content.name} Banner`}
             id="new_banner_image"
-            width={600}
-            height={400}
+            width={974}
+            height={740}
             priority
+            quality={95}
             style={{ width: "auto", height: "auto" }}
-            sizes="(max-width: 992px) 100vw, 50vw"
           />
         </div>
         <div className="teklif-right">
@@ -222,39 +244,7 @@ section { overflow: unset !important; }
                     <h2 className="mb-3">
                       {content.name} Hakkında Merak Edilenler
                     </h2>
-                    <div id="accordion" className="accordion-style">
-                      {content.faq.map((faqItem, index) => {
-                        const collapseId = `collapse-${slug}-${index}`;
-                        const headingId = `heading-${slug}-${index}`;
-                        return (
-                          <div className="card mb-3" key={index}>
-                            <div className="card-header" id={headingId}>
-                              <h3 className="mb-0">
-                                <button
-                                  className="btn btn-link collapsed"
-                                  data-bs-toggle="collapse"
-                                  data-bs-target={`#${collapseId}`}
-                                  aria-expanded="true"
-                                  aria-controls={collapseId}
-                                >
-                                  {faqItem.question}
-                                </button>
-                              </h3>
-                            </div>
-                            <div
-                              id={collapseId}
-                              className="collapse"
-                              aria-labelledby={headingId}
-                              data-bs-parent="#accordion"
-                            >
-                              <div className="card-body">
-                                <p>{faqItem.answer}</p>
-                              </div>
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </div>
+                    <ProductFaq items={content.faq} slug={slug} />
                   </div>
                 )}
               </div>
@@ -284,6 +274,59 @@ section { overflow: unset !important; }
           </div>
         </div>
       </section>
+
+      {/* En Çok Okunanlar - kategoriyle ilgili bloglar */}
+      {blogPosts.length > 0 && (
+        <section className="bg-light blog-padding">
+          <div className="container position-relative z-index-2">
+            <div className="section-heading text-center mb-2-9 mb-lg-6">
+              <span>Bloglar</span>
+              <h2 className="display-22 display-sm-18 display-md-16 display-lg-11 mb-0">
+                En Çok Okunanlar
+              </h2>
+            </div>
+            <div className="row g-xl-5 mt-n1-9">
+              {blogPosts.map((post) => (
+                <div key={post.id} className="col-md-6 col-lg-4 mt-2-9">
+                  <article className="card card-style9">
+                    <div className="card-body">
+                      <div className="image-box">
+                        <Link href={`/blog/${post.slug}`}>
+                          {post.image && (
+                            <Image
+                              src={post.image}
+                              alt={`${post.title} Görseli`}
+                              width={400}
+                              height={250}
+                              className="rounded"
+                              style={{ width: "100%", height: "auto", objectFit: "cover" }}
+                              sizes="(max-width: 768px) 100vw, (max-width: 992px) 50vw, 33vw"
+                            />
+                          )}
+                        </Link>
+                      </div>
+                      <div className="d-flex justify-content-between align-items-center mb-1">
+                        <span className="blog-card-text text-muted">{post.category.name}</span>
+                        <span className="blog-card-text">{formatDate(post.published_date)}</span>
+                      </div>
+                      <h3 className="h4 mb-4">
+                        <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                      </h3>
+                      <p className="blog-card-text">{post.short_content}</p>
+                      <Link href={`/blog/${post.slug}`} className="about-link">Devamını Oku</Link>
+                    </div>
+                  </article>
+                </div>
+              ))}
+            </div>
+            <div className="text-center mt-4 mt-lg-5">
+              <Link href="/bloglar" className="border-bottom about-link">
+                Tümünü Gör
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
     </>
   );
 }

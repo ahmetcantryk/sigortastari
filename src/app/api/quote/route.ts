@@ -17,28 +17,48 @@ import { sendMail } from "@/lib/mail";
 import { mailRecipients } from "@/lib/mail-config";
 import { quoteHtml, quoteSubject, quoteText } from "@/lib/mail-templates";
 
-const quoteSchema = z.object({
-  nameSurname: z
-    .string()
-    .min(3, "Ad Soyad en az 3 karakter olmalıdır")
-    .max(200),
-  tcKimlikNo: z
-    .string()
-    .regex(/^\d{11}$/, "TC Kimlik No 11 haneli olmalıdır"),
-  dateOfBirth: z
-    .string()
-    .regex(/^\d{2}\/\d{2}\/\d{4}$/, "Geçerli bir tarih giriniz (GG/AA/YYYY)"),
-  phone: z.string().min(1, "Telefon zorunludur").max(20),
-  email: z.string().email("Geçerli bir e-posta adresi giriniz").max(254),
-  insuranceType: z.string().optional(),
-  plaka: z.string().max(20).optional(),
-  serino: z.string().max(50).optional(),
-  kvkk: z.literal(true, { error: "KVKK onayı zorunludur" }),
-  // Güvenlik alanları
-  _hp: z.string().optional(), // honeypot
-  _ts: z.number().optional(), // timestamp
-  _path: z.string().max(500).optional(), // form kaynak path
-});
+const VEHICLE_TYPES = ["Trafik Sigortası", "Kasko Sigortası"];
+
+const quoteSchema = z
+  .object({
+    nameSurname: z
+      .string()
+      .min(3, "Ad Soyad en az 3 karakter olmalıdır")
+      .max(200),
+    tcKimlikNo: z
+      .string()
+      .regex(/^\d{11}$/, "TC Kimlik No 11 haneli olmalıdır"),
+    dateOfBirth: z
+      .string()
+      .regex(/^\d{2}\/\d{2}\/\d{4}$/, "Geçerli bir tarih giriniz (GG/AA/YYYY)"),
+    phone: z.string().min(1, "Telefon zorunludur").max(20),
+    email: z.string().email("Geçerli bir e-posta adresi giriniz").max(254),
+    insuranceType: z.string().optional(),
+    plaka: z.string().max(20).optional(),
+    serino: z.string().max(50).optional(),
+    kvkk: z.literal(true, { error: "KVKK onayı zorunludur" }),
+    _hp: z.string().optional(),
+    _ts: z.number().optional(),
+    _path: z.string().max(500).optional(),
+  })
+  .superRefine((data, ctx) => {
+    if (data.insuranceType && VEHICLE_TYPES.includes(data.insuranceType)) {
+      if (!data.plaka || data.plaka.trim().length < 3) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["plaka"],
+          message: "Plaka zorunludur",
+        });
+      }
+      if (!data.serino || data.serino.trim().length < 3) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["serino"],
+          message: "Belge Seri No zorunludur",
+        });
+      }
+    }
+  });
 
 export async function POST(request: NextRequest) {
   try {
@@ -186,7 +206,7 @@ export async function POST(request: NextRequest) {
 
     const mailOk =
       mailResult.status === "fulfilled" && mailResult.value.success;
-    const dbOk =
+    let dbOk =
       supabaseResult.status === "fulfilled" &&
       !supabaseResult.value.error &&
       !!supabaseResult.value.data?.id;
@@ -204,13 +224,58 @@ export async function POST(request: NextRequest) {
         supabaseResult.status === "rejected"
           ? supabaseResult.reason
           : supabaseResult.value.error;
-      console.error("[quote] supabase kaydedilemedi:", reason);
+      console.error("[quote] supabase (anon) kaydedilemedi:", reason);
     }
 
-    // DB başarılıysa mail durumunu UPDATE et (service role - RLS bypass)
-    if (dbOk && supabaseResult.status === "fulfilled") {
+    // FALLBACK: anon insert başarısızsa service role ile dene (RLS bypass)
+    let insertedId: string | null =
+      dbOk && supabaseResult.status === "fulfilled"
+        ? (supabaseResult.value.data!.id as string)
+        : null;
+
+    if (!dbOk) {
       try {
-        const insertedId = supabaseResult.value.data!.id as string;
+        const admin = getSupabaseAdmin();
+        const { data: adminInsert, error: adminErr } = await admin
+          .from("quote_submissions")
+          .insert({
+            name_surname: sanitized.nameSurname,
+            tc_kimlik_no: sanitized.tcKimlikNo,
+            date_of_birth: sanitized.dateOfBirth,
+            phone: sanitized.phone,
+            email: sanitized.email,
+            insurance_type: sanitized.insuranceType ?? null,
+            plaka: sanitized.plaka ?? null,
+            seri_no: sanitized.serino ?? null,
+            kvkk_accepted: true,
+            ip_address: clientIp,
+            user_agent: request.headers.get("user-agent") ?? null,
+            source_path: sourcePath,
+            mail_sent: mailOk,
+            mail_error: mailOk ? null : mailErrorMsg?.slice(0, 1000) ?? null,
+            mail_sent_at: mailOk ? new Date().toISOString() : null,
+          })
+          .select("id")
+          .single();
+        if (!adminErr && adminInsert?.id) {
+          dbOk = true;
+          insertedId = adminInsert.id as string;
+          console.warn("[quote] supabase service-role fallback başarılı");
+        } else {
+          console.error("[quote] supabase service-role da başarısız:", adminErr);
+        }
+      } catch (e) {
+        console.error("[quote] supabase service-role exception:", e);
+      }
+    }
+
+    // Anon yoluyla insert ettiyse mail durumunu UPDATE et
+    const wasAnonInsert =
+      supabaseResult.status === "fulfilled" &&
+      !supabaseResult.value.error &&
+      !!supabaseResult.value.data?.id;
+    if (dbOk && insertedId && wasAnonInsert) {
+      try {
         const admin = getSupabaseAdmin();
         const { error: updateErr } = await admin
           .from("quote_submissions")

@@ -3,7 +3,7 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod/v4";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect, useRef, useCallback, useState } from "react";
+import { useEffect, useRef, useCallback, useState, useMemo } from "react";
 import IMask from "imask";
 import Swal from "sweetalert2";
 import "sweetalert2/dist/sweetalert2.min.css";
@@ -11,19 +11,34 @@ import TomSelect from "tom-select";
 import "tom-select/dist/css/tom-select.bootstrap5.min.css";
 import KvkkCheckbox from "./KvkkCheckbox";
 
-const quoteSchema = z.object({
-  nameSurname: z.string().min(3, "Ad Soyad en az 3 karakter olmalıdır"),
-  tcKimlikNo: z.string().regex(/^\d{11}$/, "TC Kimlik No 11 haneli olmalıdır"),
-  dateOfBirth: z.string().regex(/^\d{2}\/\d{2}\/\d{4}$/, "Geçerli bir tarih giriniz (GG/AA/YYYY)"),
-  phone: z.string().min(1, "Telefon zorunludur"),
-  email: z.string().email("Geçerli bir e-posta adresi giriniz"),
-  plaka: z.string().optional(),
-  serino: z.string().optional(),
-  insuranceType: z.string().optional(),
-  kvkk: z.literal(true, { error: "KVKK onayı zorunludur" }),
-});
+function buildQuoteSchema(plakaRequired: boolean, serinoRequired: boolean) {
+  const plakaField = plakaRequired
+    ? z
+        .string()
+        .min(1, "Plaka zorunludur")
+        .refine((v) => v.trim().length >= 3, "Plaka zorunludur")
+    : z.string().optional();
+  const serinoField = serinoRequired
+    ? z
+        .string()
+        .min(1, "Belge Seri No zorunludur")
+        .refine((v) => v.trim().length >= 3, "Belge Seri No zorunludur")
+    : z.string().optional();
 
-type QuoteFormData = z.infer<typeof quoteSchema>;
+  return z.object({
+    nameSurname: z.string().min(3, "Ad Soyad en az 3 karakter olmalıdır"),
+    tcKimlikNo: z.string().regex(/^\d{11}$/, "TC Kimlik No 11 haneli olmalıdır"),
+    dateOfBirth: z.string().regex(/^\d{2}\/\d{2}\/\d{4}$/, "Geçerli bir tarih giriniz (GG/AA/YYYY)"),
+    phone: z.string().min(1, "Telefon zorunludur"),
+    email: z.string().email("Geçerli bir e-posta adresi giriniz"),
+    plaka: plakaField,
+    serino: serinoField,
+    insuranceType: z.string().optional(),
+    kvkk: z.literal(true, { error: "KVKK onayı zorunludur" }),
+  });
+}
+
+type QuoteFormData = z.infer<ReturnType<typeof buildQuoteSchema>>;
 
 interface QuoteFormProps {
   preselectedProduct?: string;
@@ -74,6 +89,11 @@ export default function QuoteForm({
   const wantPlaka = showPlaka || (showInsuranceSelect && isVehicle);
   const wantSerino = showSerino || (showInsuranceSelect && isVehicle);
 
+  const quoteSchema = useMemo(
+    () => buildQuoteSchema(wantPlaka, wantSerino),
+    [wantPlaka, wantSerino]
+  );
+
   useEffect(() => {
     formLoadTime.current = Date.now();
   }, []);
@@ -82,10 +102,14 @@ export default function QuoteForm({
     register,
     handleSubmit,
     setValue,
+    setError,
+    clearErrors,
     reset,
     formState: { errors },
   } = useForm<QuoteFormData>({
     resolver: zodResolver(quoteSchema),
+    mode: "onSubmit",
+    reValidateMode: "onChange",
     defaultValues: {
       nameSurname: "",
       tcKimlikNo: "",
@@ -176,6 +200,18 @@ export default function QuoteForm({
   }, [showInsuranceSelect, preselectedProduct, setValue]);
 
   const onSubmit = async (data: QuoteFormData) => {
+    // Plaka/Belge Seri No - prop bazlı zorunluluk garantisi
+    let hasError = false;
+    if (wantPlaka && (!data.plaka || data.plaka.trim().length < 3)) {
+      setError("plaka", { type: "manual", message: "Plaka zorunludur" });
+      hasError = true;
+    }
+    if (wantSerino && (!data.serino || data.serino.trim().length < 3)) {
+      setError("serino", { type: "manual", message: "Belge Seri No zorunludur" });
+      hasError = true;
+    }
+    if (hasError) return;
+
     setIsSubmitting(true);
     try {
       const sourcePath =
@@ -306,6 +342,7 @@ export default function QuoteForm({
               <label htmlFor="input-plaka" className="d-none"></label>
               <span className="input-group-text"><i className="icon-plaka "></i></span>
               <input required type="text" placeholder="Araç Plakası" id="input-plaka" className="form-control " {...register("plaka")} />
+              {errors.plaka && <span className="just-validate-error-label">{errors.plaka.message}</span>}
             </div>
           )}
 
@@ -315,6 +352,7 @@ export default function QuoteForm({
               <label htmlFor="input-serino" className="d-none"></label>
               <span className="input-group-text"><i className="icon-serino "></i></span>
               <input required type="text" placeholder="Belge Seri No" id="input-serino" className="form-control imask" {...register("serino")} />
+              {errors.serino && <span className="just-validate-error-label">{errors.serino.message}</span>}
             </div>
           )}
 
