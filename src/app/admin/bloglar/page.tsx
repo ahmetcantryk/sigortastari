@@ -3,6 +3,8 @@
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import AdminShell from "@/components/admin/AdminShell";
+import FilterBar, { FilterSelect, type FilterChip } from "@/components/admin/FilterBar";
+import ConfirmDialog from "@/components/admin/ConfirmDialog";
 import { useToast } from "@/components/admin/Toast";
 
 interface Post {
@@ -20,13 +22,33 @@ interface Category {
   name: string;
 }
 
+const EditIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+  </svg>
+);
+const TrashIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="3 6 5 6 21 6" />
+    <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+  </svg>
+);
+const PlusIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: 6 }}>
+    <line x1="12" y1="5" x2="12" y2="19" />
+    <line x1="5" y1="12" x2="19" y2="12" />
+  </svg>
+);
+
 export default function AdminBloglarPage() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [search, setSearch] = useState("");
   const [catFilter, setCatFilter] = useState("");
   const [loading, setLoading] = useState(true);
-  const [deleting, setDeleting] = useState<string | null>(null);
+  const [deleting, setDeleting] = useState<Post | null>(null);
+  const [busyDelete, setBusyDelete] = useState(false);
   const toast = useToast();
 
   const fetchPosts = useCallback(async () => {
@@ -45,7 +67,9 @@ export default function AdminBloglarPage() {
   }, [search, catFilter, toast]);
 
   useEffect(() => {
-    fetch("/api/admin/categories").then((r) => r.json()).then(setCategories);
+    fetch("/api/admin/categories")
+      .then((r) => r.json())
+      .then(setCategories);
   }, []);
 
   useEffect(() => {
@@ -53,62 +77,78 @@ export default function AdminBloglarPage() {
     return () => clearTimeout(timer);
   }, [fetchPosts]);
 
-  const handleDelete = async (id: string, title: string) => {
-    if (!confirm(`"${title}" yazısını silmek istediğinize emin misiniz?`)) return;
-    setDeleting(id);
-    const res = await fetch(`/api/admin/posts/${id}`, { method: "DELETE" });
+  const confirmDelete = async () => {
+    if (!deleting) return;
+    setBusyDelete(true);
+    const res = await fetch(`/api/admin/posts/${deleting.id}`, { method: "DELETE" });
     if (res.ok) {
-      toast.success(`"${title}" silindi`);
+      toast.success(`"${deleting.title}" silindi`);
+      setDeleting(null);
       fetchPosts();
     } else {
       toast.error("Silme işlemi başarısız oldu");
     }
-    setDeleting(null);
+    setBusyDelete(false);
+  };
+
+  const chips: FilterChip[] = [];
+  if (catFilter) {
+    const cat = categories.find((c) => c.id === catFilter);
+    chips.push({
+      key: "cat",
+      label: cat?.name ?? catFilter,
+      onClear: () => setCatFilter(""),
+    });
+  }
+
+  const clearAll = () => {
+    setSearch("");
+    setCatFilter("");
   };
 
   return (
     <AdminShell>
-      <h1>Blog Yazıları</h1>
-
-      <div className="toolbar">
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Başlık ara..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-        <select
-          className="form-control"
-          value={catFilter}
-          onChange={(e) => setCatFilter(e.target.value)}
-          style={{ minWidth: 160 }}
-        >
-          <option value="">Tüm Kategoriler</option>
-          {categories.map((c) => (
-            <option key={c.id} value={c.id}>{c.name}</option>
-          ))}
-        </select>
-        <span style={{ color: "#64748b", fontSize: 13 }}>
-          {!loading && `${posts.length} yazı`}
-        </span>
-        <Link href="/admin/bloglar/yeni" className="btn btn-primary" style={{ marginLeft: "auto" }}>
-          + Yeni Yazı
+      <div className="page-head">
+        <h1>Blog Yazıları</h1>
+        <Link href="/admin/bloglar/yeni" className="btn btn-primary">
+          <PlusIcon /> Yeni Yazı
         </Link>
       </div>
 
+      <FilterBar
+        search={search}
+        onSearchChange={setSearch}
+        searchPlaceholder="Başlık ara..."
+        filters={
+          <FilterSelect
+            value={catFilter}
+            onChange={setCatFilter}
+            placeholder="Tüm kategoriler"
+            width={180}
+            options={categories.map((c) => ({ value: c.id, label: c.name }))}
+          />
+        }
+        chips={chips}
+        onClearAll={clearAll}
+        count={posts.length}
+        loading={loading}
+        countLabel="yazı"
+      />
+
       {loading ? (
-        <p>Yükleniyor...</p>
+        <div className="admin-empty">Yükleniyor...</div>
+      ) : posts.length === 0 ? (
+        <div className="admin-empty">Blog yazısı bulunamadı.</div>
       ) : (
         <table className="admin-table">
           <thead>
             <tr>
-              <th>Görsel</th>
+              <th style={{ width: 80 }}>Görsel</th>
               <th>Başlık</th>
               <th>Kategori</th>
               <th>Tarih</th>
               <th>Popüler</th>
-              <th>İşlem</th>
+              <th style={{ width: 1, textAlign: "right" }}></th>
             </tr>
           </thead>
           <tbody>
@@ -119,45 +159,70 @@ export default function AdminBloglarPage() {
                     // eslint-disable-next-line @next/next/no-img-element
                     <img src={post.image} alt="" />
                   ) : (
-                    <div style={{ width: 60, height: 40, background: "#e2e8f0", borderRadius: 4 }} />
+                    <div
+                      style={{
+                        width: 60,
+                        height: 40,
+                        background: "var(--bg-muted)",
+                        border: "1px solid var(--border)",
+                        borderRadius: 4,
+                      }}
+                    />
                   )}
                 </td>
                 <td>
-                  <Link href={`/admin/bloglar/${post.id}`} style={{ color: "#1e40af", textDecoration: "none" }}>
+                  <Link
+                    href={`/admin/bloglar/${post.id}`}
+                    style={{ color: "var(--fg)", textDecoration: "none", fontWeight: 500 }}
+                  >
                     {post.title}
                   </Link>
                 </td>
                 <td>{post.blog_categories?.name || "-"}</td>
-                <td>{post.published_date}</td>
+                <td style={{ whiteSpace: "nowrap" }}>{post.published_date}</td>
                 <td>
                   <span className={`badge ${post.is_popular ? "badge-green" : "badge-gray"}`}>
                     {post.is_popular ? "Evet" : "Hayır"}
                   </span>
                 </td>
                 <td>
-                  <Link href={`/admin/bloglar/${post.id}`} className="btn btn-secondary btn-sm" style={{ marginRight: 4 }}>
-                    Düzenle
-                  </Link>
-                  <button
-                    className="btn btn-danger btn-sm"
-                    onClick={() => handleDelete(post.id, post.title)}
-                    disabled={deleting === post.id}
-                  >
-                    {deleting === post.id ? "..." : "Sil"}
-                  </button>
+                  <span className="row-actions">
+                    <Link
+                      href={`/admin/bloglar/${post.id}`}
+                      className="row-action-btn"
+                      aria-label="Düzenle"
+                    >
+                      <EditIcon />
+                    </Link>
+                    <button
+                      className="row-action-btn"
+                      onClick={() => setDeleting(post)}
+                      aria-label="Sil"
+                    >
+                      <TrashIcon />
+                    </button>
+                  </span>
                 </td>
               </tr>
             ))}
-            {posts.length === 0 && (
-              <tr>
-                <td colSpan={6} style={{ textAlign: "center", padding: 40 }}>
-                  Blog yazısı bulunamadı.
-                </td>
-              </tr>
-            )}
           </tbody>
         </table>
       )}
+
+      <ConfirmDialog
+        open={!!deleting}
+        title="Yazıyı sil"
+        description={
+          deleting
+            ? `"${deleting.title}" yazısını silmek istediğinize emin misiniz? Bu işlem geri alınamaz.`
+            : ""
+        }
+        confirmLabel="Sil"
+        destructive
+        onConfirm={confirmDelete}
+        onCancel={() => setDeleting(null)}
+        busy={busyDelete}
+      />
     </AdminShell>
   );
 }

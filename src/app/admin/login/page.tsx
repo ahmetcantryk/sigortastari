@@ -34,7 +34,8 @@ function LoginForm() {
   return (
     <div className="login-wrapper">
       <form className="login-box" onSubmit={handleSubmit}>
-        <h1>Admin Giriş</h1>
+        <h1>Admin Girişi</h1>
+        <p className="login-sub">Devam etmek için giriş yapın.</p>
         <div className="form-group">
           <label>Email</label>
           <input

@@ -1,6 +1,7 @@
 import { type NextRequest } from "next/server";
 import { z } from "zod/v4";
 import { supabase } from "@/lib/supabase";
+import { getSupabaseAdmin } from "@/lib/supabase-admin";
 import {
   validateAndSanitize,
   isHoneypotFilled,
@@ -11,6 +12,9 @@ import {
   validateRequestHeaders,
   getClientIp,
 } from "@/lib/security";
+import { sendMail } from "@/lib/mail";
+import { mailRecipients } from "@/lib/mail-config";
+import { contactHtml, contactSubject, contactText } from "@/lib/mail-templates";
 
 const contactSchema = z.object({
   nameSurname: z
@@ -31,6 +35,7 @@ const contactSchema = z.object({
   // Güvenlik alanları
   _hp: z.string().optional(), // honeypot
   _ts: z.number().optional(), // timestamp
+  _path: z.string().max(500).optional(), // form kaynak path
 });
 
 export async function POST(request: NextRequest) {
@@ -117,31 +122,103 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Supabase'e kaydet
-    const { error: insertError } = await supabase
-      .from("contact_submissions")
-      .insert({
-        name_surname: sanitized.nameSurname,
-        email: sanitized.email,
-        phone: sanitized.phone,
-        subject: sanitized.subject,
-        message: sanitized.message,
-        kvkk_accepted: true,
-        ip_address: clientIp,
-        user_agent: request.headers.get("user-agent") ?? null,
-      });
+    // ─── Mail + Supabase paralel çalıştır ───
+    // Birinin hatası diğerini etkilemez. (Promise.allSettled)
+    const submittedAt = new Date();
+    const sourcePath =
+      typeof body._path === "string" ? body._path.slice(0, 500) : null;
+    const mailData = {
+      nameSurname: sanitized.nameSurname,
+      email: sanitized.email,
+      phone: sanitized.phone,
+      subject: sanitized.subject,
+      message: sanitized.message,
+      ipAddress: clientIp,
+      sourcePath,
+      submittedAt,
+    };
 
-    if (insertError) {
-      console.error("Supabase insert error:", insertError);
+    const [mailResult, supabaseResult] = await Promise.allSettled([
+      sendMail({
+        recipients: mailRecipients.contact,
+        subject: contactSubject(mailData),
+        html: contactHtml(mailData),
+        text: contactText(mailData),
+        replyTo: sanitized.email,
+      }),
+      supabase
+        .from("contact_submissions")
+        .insert({
+          name_surname: sanitized.nameSurname,
+          email: sanitized.email,
+          phone: sanitized.phone,
+          subject: sanitized.subject,
+          message: sanitized.message,
+          kvkk_accepted: true,
+          ip_address: clientIp,
+          user_agent: request.headers.get("user-agent") ?? null,
+          source_path: sourcePath,
+        })
+        .select("id")
+        .single(),
+    ]);
+
+    const mailOk =
+      mailResult.status === "fulfilled" && mailResult.value.success;
+    const dbOk =
+      supabaseResult.status === "fulfilled" &&
+      !supabaseResult.value.error &&
+      !!supabaseResult.value.data?.id;
+
+    // Hataları logla (kullanıcıya sızdırma)
+    let mailErrorMsg: string | null = null;
+    if (!mailOk) {
+      mailErrorMsg =
+        mailResult.status === "rejected"
+          ? String(mailResult.reason)
+          : (mailResult.value as { error?: string }).error || "Bilinmeyen hata";
+      console.error("[contact] mail gönderilemedi:", mailErrorMsg);
+    }
+    if (!dbOk) {
+      const reason =
+        supabaseResult.status === "rejected"
+          ? supabaseResult.reason
+          : supabaseResult.value.error;
+      console.error("[contact] supabase kaydedilemedi:", reason);
+    }
+
+    // DB başarılıysa mail durumunu UPDATE et (service role - RLS bypass)
+    if (dbOk && supabaseResult.status === "fulfilled") {
+      try {
+        const insertedId = supabaseResult.value.data!.id as string;
+        const admin = getSupabaseAdmin();
+        const { error: updateErr } = await admin
+          .from("contact_submissions")
+          .update({
+            mail_sent: mailOk,
+            mail_error: mailOk ? null : mailErrorMsg?.slice(0, 1000) ?? null,
+            mail_sent_at: mailOk ? new Date().toISOString() : null,
+          })
+          .eq("id", insertedId);
+
+        if (updateErr) {
+          console.error("[contact] mail durumu güncellenemedi:", updateErr);
+        }
+      } catch (e) {
+        console.error("[contact] mail durumu update exception:", e);
+      }
+    }
+
+    // İkisi de başarısızsa hata dön
+    if (!mailOk && !dbOk) {
       return Response.json(
         { success: false, error: "Bir hata oluştu. Lütfen tekrar deneyiniz." },
         { status: 500 }
       );
     }
 
-    // Rate limit kaydı oluştur
+    // En az biri başarılıysa rate limit kaydet ve başarılı dön
     await recordRateLimit(clientIp, "contact");
-
     return Response.json({ success: true });
   } catch (err) {
     console.error("Contact form error:", err);

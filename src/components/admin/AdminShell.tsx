@@ -5,6 +5,8 @@ import { usePathname, useRouter } from "next/navigation";
 import { ToastProvider, useToast } from "./Toast";
 
 const nav = [
+  { href: "/admin/teklifler", label: "Teklif Talepleri" },
+  { href: "/admin/iletisim", label: "İletişim Mesajları" },
   { href: "/admin/bloglar", label: "Blog Yazıları" },
   { href: "/admin/kategoriler", label: "Kategoriler" },
 ];

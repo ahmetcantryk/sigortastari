@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     description:
       "Sigorta Starı, sektör tecrübesi ile müşterilerine en iyi, en kaliteli,kapsamlı ve en uygun sigorta hizmetlerini sunmak için çalışan bir sigorta aracı kurumudur.",
     siteName: "Sigortastarı",
-    locale: "tr-TR",
+    locale: "tr_TR",
     images: [{ url: "/images/logos.png" }],
   },
   alternates: { canonical: "https://www.sigortastari.com/hakkimizda" },

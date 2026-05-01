@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     description:
       "Kişisel verilerinizi önemsiyoruz! Kişisel verilerin korunması kanunu ile ilgili bilgiler ve Sigorta Starı'nın politikaları burada. Detaylı bilgi için tıklayın.",
     siteName: "Sigortastarı",
-    locale: "tr-TR",
+    locale: "tr_TR",
     images: [{ url: "/images/logos.png" }],
   },
   alternates: { canonical: "https://www.sigortastari.com/kvkk" },

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     description:
       "Sigorta Starı'nın anlaşmalı olduğu Türkiye'nin en iyi, en kapsamlı ve en uygun sigorta poliçesi veren sigora şirketlerini hemen inceleyin ve sigorta teklifi alın!",
     siteName: "Sigortastarı",
-    locale: "tr-TR",
+    locale: "tr_TR",
     images: [{ url: "/images/logos.png" }],
   },
   alternates: { canonical: "https://www.sigortastari.com/anlasmali-sirketler" },

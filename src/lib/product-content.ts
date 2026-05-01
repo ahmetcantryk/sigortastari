@@ -105,9 +105,9 @@ export const productContents: Record<string, ProductContent> = {
     bannerImage: "/images/kasko-bnn.webp",
     contentImage: "/images/kasko-sayfaici.webp",
     contentImageAlt: "Kasko Sigortası Görseli",
-    metaTitle: "Araç Kasko Sigortası | Sigorta Starı",
+    metaTitle: "Kasko Sigortası | Sigorta Starı",
     metaDescription:
-      "Kasko sigortası ile aracınızı her türlü riske karşı güvence altına alın. Detaylı bilgi ve kasko sigortası teklifi için hemen tıklayın.",
+      "En uygun ve en kapsamlı araç kasko sigortasına sahip olmak için hemen Sigorta Starı'ndan hızlı kasko poliçe teklifi alın!",
     intro: [
       "Sigorta Starı olarak, kasko sigortası hizmetimizle araç sahiplerine kapsamlı bir koruma sunuyoruz. Kasko sigortası, aracınızın başına gelebilecek hırsızlık, kaza, doğal afet gibi birçok riske karşı güvence sağlar.",
       "Kasko sigortası primi; aracın marka ve modeli, yaşı, kullanım amacı ve sürücü profili gibi faktörlere göre belirlenir.",
@@ -152,9 +152,9 @@ export const productContents: Record<string, ProductContent> = {
     bannerImage: "/images/konut-bn.webp",
     contentImage: "/images/konut-sayfaici.webp",
     contentImageAlt: "Konut Sigortası Görseli",
-    metaTitle: "Konut Sigortası | Sigorta Starı",
+    metaTitle: "Ev Güvenliğiniz İçin Konut Sigortası | Sigorta Starı",
     metaDescription:
-      "Konut sigortası ile evinizi ve eşyalarınızı yangın, hırsızlık ve doğal afetlere karşı güvence altına alın.",
+      "Evinizin güvenliği için doğru adres! Konut sigortası ile evinizi ve eşyalarınızı koruma altına alabilirsiniz. Detaylı bilgi ve sigorta teklifi için tıklayın.",
     intro: [
       "Sigorta Starı olarak, konut sigortası hizmetimizle evinizi ve değerli eşyalarınızı olası risklere karşı koruma altına alıyoruz.",
       "Konut sigortası, evinizi yangın, hırsızlık, su basması, deprem ve daha birçok riske karşı güvence altına alır.",
@@ -194,9 +194,9 @@ export const productContents: Record<string, ProductContent> = {
     bannerImage: "/images/isyeri-bn.webp",
     contentImage: "/images/isyeri-sayfaici.webp",
     contentImageAlt: "İş Yeri Sigortası Görseli",
-    metaTitle: "İş Yeri Sigortası | Sigorta Starı",
+    metaTitle: "Güvenliğiniz İçin İş Yeri Sigortası | Sigorta Starı",
     metaDescription:
-      "İş yeri sigortası ile işletmenizi yangın, hırsızlık ve diğer risklere karşı koruyun.",
+      "İş yerinizin güvenliği Sigorta Starı ile emin ellerde! İş yeri sigortası ile işinizi koruma altına alabilirsiniz. Detaylı bilgi ve teklif için hemen tıklayın.",
     intro: [
       "Sigorta Starı olarak, iş yeri sigortası hizmetimizle işletmenizi olası risklere karşı koruma altına alıyoruz.",
       "İş yeri sigortası, iş yerinizi yangın, hırsızlık, doğal afet gibi risklere karşı güvence altına alır ve iş sürekliliğinizi sağlar.",
@@ -239,7 +239,7 @@ export const productContents: Record<string, ProductContent> = {
     contentImageAlt: "Ferdi Kaza Sigortası Görseli",
     metaTitle: "Ferdi Kaza Sigortası | Sigorta Starı",
     metaDescription:
-      "Ferdi kaza sigortası ile kendinizi ve ailenizi beklenmedik kazalara karşı güvence altına alın.",
+      "Beklenmedik kazara karşı finansal güvence! Ferdi kaza sigortası ile sevdiklerinizin geleceğini koruyun. Poliçe teklifi için hemen tıklayın.",
     intro: [
       "Sigorta Starı olarak, ferdi kaza sigortası hizmetimizle sizi ve ailenizi beklenmedik kazalara karşı koruma altına alıyoruz.",
       "Ferdi kaza sigortası, kaza sonucu oluşabilecek vefat, sürekli sakatlık ve tedavi masraflarını karşılar.",
@@ -278,9 +278,9 @@ export const productContents: Record<string, ProductContent> = {
     bannerImage: "/images/mesleki-bn.webp",
     contentImage: "/images/meslekisorumluluk--sayfaici.webp",
     contentImageAlt: "Mesleki Sorumluluk Sigortası Görseli",
-    metaTitle: "Mesleki Sorumluluk Sigortası | Sigorta Starı",
+    metaTitle: "Mali Koruma İçin Mesleki Sorumluluk Sigortası | Sigorta Starı",
     metaDescription:
-      "Mesleki sorumluluk sigortası ile mesleki faaliyetlerinizden doğabilecek riskleri güvence altına alın.",
+      "Meslek alanında oluşabilecek hatalara karşı mali koruma! Mesleki sorumluluk sigortası ile işinizi güvence altına alın. Detaylı bilgi ve teklif için tıklayın.",
     intro: [
       "Sigorta Starı olarak, mesleki sorumluluk sigortası hizmetimizle meslek sahiplerini mesleki faaliyetlerinden doğabilecek risklere karşı koruma altına alıyoruz.",
       "Mesleki sorumluluk sigortası, mesleki hata veya ihmal sonucu üçüncü kişilere verilen zararları teminat altına alır.",
@@ -319,9 +319,9 @@ export const productContents: Record<string, ProductContent> = {
     bannerImage: "/images/nakliyat-bn.webp",
     contentImage: "/images/nakliyat-sigortasi-banner--sayfaici.webp",
     contentImageAlt: "Nakliyat Sigortası Görseli",
-    metaTitle: "Nakliyat Sigortası | Sigorta Starı",
+    metaTitle: "Eşyalarınız İçin Nakliyat Sigortası | Sigorta Starı",
     metaDescription:
-      "Nakliyat sigortası ile taşınan mallarınızı her türlü riske karşı koruma altına alın.",
+      "Taşıma sürecinde oluşabilecek risklere karşı güvence! Nakliyat sigortası ile eşyalarınız tamamen güvende. Detaylı bilgi ve sigorta teklifi almak için tıklayın.",
     intro: [
       "Sigorta Starı olarak, nakliyat sigortası hizmetimizle taşınan mallarınızı olası risklere karşı koruma altına alıyoruz.",
       "Nakliyat sigortası, taşıma sürecinde oluşabilecek hasar, kayıp ve hırsızlık gibi riskleri teminat altına alır.",
@@ -360,9 +360,9 @@ export const productContents: Record<string, ProductContent> = {
     bannerImage: "/images/tss-bn.webp",
     contentImage: "/images/TSS--sayfaici.webp",
     contentImageAlt: "Tamamlayıcı Sağlık Sigortası Görseli",
-    metaTitle: "Tamamlayıcı Sağlık Sigortası | Sigorta Starı",
+    metaTitle: "En Kapsamlı Tamamlayıcı Sağlık Sigortası | Sigorta Starı",
     metaDescription:
-      "Tamamlayıcı sağlık sigortası ile SGK'nın karşılamadığı sağlık giderlerinizi güvence altına alın.",
+      "SGK'nın sunduğu sağlık hizmetlerine ek koruma sağlayın! Tamamlayıcı sağlık sigortası ile eksik kalanları tamamlayın. Detaylı bilgi ve teklif için tıklayın.",
     intro: [
       "Sigorta Starı olarak, tamamlayıcı sağlık sigortası (TSS) hizmetimizle SGK'nın karşılamadığı sağlık giderlerinizi koruma altına alıyoruz.",
       "TSS, anlaşmalı özel hastanelerde muayene, tetkik, ameliyat ve yatış gibi sağlık hizmetlerinden yararlanmanızı sağlar.",
@@ -405,7 +405,7 @@ export const productContents: Record<string, ProductContent> = {
     contentImageAlt: "Yabancı Uyruklular İçin Sağlık Sigortası Görseli",
     metaTitle: "Yabancı Uyruklular İçin Sağlık Sigortası | Sigorta Starı",
     metaDescription:
-      "Yabancı uyruklular için sağlık sigortası ile Türkiye'deki sağlık ihtiyaçlarınızı karşılayın.",
+      "Türkiye'de uzun süreli ikamet eden yabancı uyruklular bireyler için yabancı sağlık sigortası (YSS) yapılır. Detaylı bilgi ve teklif almak için hemen tıklayın.",
     intro: [
       "Sigorta Starı olarak, Türkiye'de yaşayan yabancı uyruklu kişilere özel sağlık sigortası hizmeti sunuyoruz.",
       "Yabancı uyruklular için sağlık sigortası, ikamet izni başvuruları için de gerekli olan kapsamlı bir sağlık güvencesi sağlar.",
@@ -445,9 +445,9 @@ export const productContents: Record<string, ProductContent> = {
     bannerImage: "/images/ozel-bn.webp",
     contentImage: "/images/%C3%B6zel-saglik-safaici.webp",
     contentImageAlt: "Özel Sağlık Sigortası Görseli",
-    metaTitle: "Özel Sağlık Sigortası | Sigorta Starı",
+    metaTitle: "En Kapsamlı Özel Sağlık Sigortası | Sigorta Starı",
     metaDescription:
-      "Özel sağlık sigortası ile kendinize ve ailenize en iyi sağlık hizmetini sağlayın.",
+      "Hayatınızın her anında sağlığınız ön planda! Özel sağlık sigortası ile geniş kapsamlı teminatlara sahip olun. Detaylı bilgi ve teklif almak için hemen tıklayın.",
     intro: [
       "Sigorta Starı olarak, özel sağlık sigortası (ÖSS) hizmetimizle size ve ailenize premium sağlık hizmetleri sunuyoruz.",
       "Özel sağlık sigortası, özel hastanelerde muayene, tetkik, ameliyat ve yatış gibi kapsamlı sağlık hizmetlerinden yararlanmanızı sağlar.",
@@ -489,9 +489,9 @@ export const productContents: Record<string, ProductContent> = {
     bannerImage: "/images/seyahat-bnn.webp",
     contentImage: "/images/seyahat-saglik.webp",
     contentImageAlt: "Seyahat Sağlık Sigortası Görseli",
-    metaTitle: "Seyahat Sağlık Sigortası | Sigorta Starı",
+    metaTitle: "En Uygun ve Kapsamlı Seyahat Sağlık Sigortası | Sigorta Starı",
     metaDescription:
-      "Seyahat sağlık sigortası ile yurt dışı seyahatlerinizde güvende olun.",
+      "Yurt içi ve yurt dışı seyahatlerinizde sağlığınız güvence altında! Seyahat sağlık sigortası ile anında sigorta poliçesi. Hemen seyahat sağlık sigorta teklifi alın.",
     intro: [
       "Sigorta Starı olarak, seyahat sağlık sigortası hizmetimizle yurt içi ve yurt dışı seyahatlerinizde sizi koruma altına alıyoruz.",
       "Seyahat sağlık sigortası, seyahat süresince karşılaşabileceğiniz sağlık sorunlarına karşı kapsamlı bir güvence sağlar.",

@@ -80,34 +80,35 @@ function ToastItem({ toast, onClose }: { toast: ToastItem; onClose: () => void }
     }
   }, [exiting, onClose]);
 
-  const colors: Record<ToastType, { bg: string; border: string; icon: string }> = {
-    success: { bg: "#f0fdf4", border: "#22c55e", icon: "\u2713" },
-    error:   { bg: "#fef2f2", border: "#ef4444", icon: "\u2717" },
-    info:    { bg: "#eff6ff", border: "#3b82f6", icon: "\u2139" },
+  const icons: Record<ToastType, string> = {
+    success: "\u2713",
+    error: "\u2717",
+    info: "\u2139",
   };
 
-  const c = colors[toast.type];
+  const isError = toast.type === "error";
 
   return (
     <div
       style={{
-        background: c.bg,
-        borderLeft: `4px solid ${c.border}`,
-        padding: "12px 16px",
-        borderRadius: 6,
-        boxShadow: "0 4px 12px rgba(0,0,0,0.12)",
+        background: isError ? "#ffffff" : "#09090b",
+        color: isError ? "#09090b" : "#fafafa",
+        border: `1px solid ${isError ? "#09090b" : "#09090b"}`,
+        padding: "12px 14px",
+        borderRadius: 8,
+        boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
         display: "flex",
         alignItems: "center",
         gap: 10,
-        fontSize: 14,
-        color: "#1e293b",
+        fontSize: 13,
+        fontWeight: 500,
         opacity: exiting ? 0 : 1,
         transform: exiting ? "translateX(100%)" : "translateX(0)",
         transition: "opacity 0.3s, transform 0.3s",
         animation: "slideIn 0.3s ease-out",
       }}
     >
-      <span style={{ fontWeight: 700, fontSize: 16, color: c.border }}>{c.icon}</span>
+      <span style={{ fontWeight: 700, fontSize: 14 }}>{icons[toast.type]}</span>
       <span style={{ flex: 1 }}>{toast.message}</span>
       <button
         onClick={() => setExiting(true)}
@@ -115,8 +116,9 @@ function ToastItem({ toast, onClose }: { toast: ToastItem; onClose: () => void }
           background: "none",
           border: "none",
           cursor: "pointer",
-          fontSize: 18,
-          color: "#94a3b8",
+          fontSize: 16,
+          color: "inherit",
+          opacity: 0.6,
           padding: 0,
           lineHeight: 1,
         }}

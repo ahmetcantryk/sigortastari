@@ -64,6 +64,10 @@ export default function ContactForm() {
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
     try {
+      const sourcePath =
+        typeof window !== "undefined"
+          ? window.location.pathname + window.location.search
+          : "";
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -71,6 +75,7 @@ export default function ContactForm() {
           ...data,
           _hp: honeypotRef.current?.value ?? "",
           _ts: formLoadTime.current,
+          _path: sourcePath,
         }),
       });
 

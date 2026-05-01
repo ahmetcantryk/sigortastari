@@ -3,62 +3,22 @@
 import Image from "next/image";
 import Link from "next/link";
 import QuoteForm from "@/components/forms/QuoteForm";
-import { useState } from "react";
 
 const insuranceBoxes = [
-  {
-    icon: "icon-traffic",
-    label: "Trafik Sigortası",
-  },
-  {
-    icon: "icon-kasko",
-    label: "Kasko Sigortası",
-  },
-  {
-    icon: "icon-tss",
-    label: "Tamamlayıcı Sağlık Sigortası",
-  },
-  {
-    icon: "icon-private-health",
-    label: "Özel Sağlık Sigortası",
-  },
-  {
-    icon: "icon-nakliyat",
-    label: "Nakliyat Sigortası",
-  },
-  {
-    icon: "icon-isyeri",
-    label: "İşyeri Sigortası",
-  },
-  {
-    icon: "icon-seyahat-saglik",
-    label: "Seyahat Sağlık Sigortası",
-  },
-  {
-    icon: "icon-konut",
-    label: "Konut Sigortası",
-  },
-  {
-    icon: "icon-ferdi-kaza",
-    label: "Ferdi Kaza Sigortası",
-  },
-  {
-    icon: "icon-sorumluluk",
-    label: "Mesleki Sorumluluk Sigortası",
-  },
-  {
-    icon: "icon-yabanci-saglik",
-    label: "Yabancı Uyruklular İçin Sağlık Sigortası",
-  },
+  { icon: "icon-traffic", label: "Trafik Sigortası", slug: "trafik-sigortasi" },
+  { icon: "icon-kasko", label: "Kasko Sigortası", slug: "arac-kasko-sigortasi" },
+  { icon: "icon-tss", label: "Tamamlayıcı Sağlık Sigortası", slug: "tamamlayici-saglik-sigortasi" },
+  { icon: "icon-private-health", label: "Özel Sağlık Sigortası", slug: "ozel-saglik-sigortasi" },
+  { icon: "icon-nakliyat", label: "Nakliyat Sigortası", slug: "nakliyat-sigortasi" },
+  { icon: "icon-isyeri", label: "İşyeri Sigortası", slug: "is-yeri-sigortasi" },
+  { icon: "icon-seyahat-saglik", label: "Seyahat Sağlık Sigortası", slug: "seyahat-saglik-sigortasi" },
+  { icon: "icon-konut", label: "Konut Sigortası", slug: "konut-sigortasi" },
+  { icon: "icon-ferdi-kaza", label: "Ferdi Kaza Sigortası", slug: "ferdi-kaza-sigortasi" },
+  { icon: "icon-sorumluluk", label: "Mesleki Sorumluluk Sigortası", slug: "mesleki-sorumluluk-sigortasi" },
+  { icon: "icon-yabanci-saglik", label: "Yabancı Uyruklular İçin Sağlık Sigortası", slug: "yabanci-uyruklular-icin-saglik-sigortasi" },
 ];
 
 export default function TeklifAlClient() {
-  const [selectedProduct, setSelectedProduct] = useState("");
-
-  const handleBoxClick = (label: string) => {
-    setSelectedProduct(label);
-  };
-
   return (
     <div className="teklif-content">
       <div className="teklif-left">
@@ -73,22 +33,15 @@ export default function TeklifAlClient() {
         <h1>Tüm Sigorta Ürünlerimizde Size Özel İndirimler!</h1>
         <div className="insurance-options">
           {insuranceBoxes.map((box) => (
-            <button
-              key={box.label}
+            <Link
+              key={box.slug}
+              href={`/urunler/${box.slug}`}
               className="teklif-box"
-              type="button"
-              onClick={() => handleBoxClick(box.label)}
-              style={{
-                cursor: "pointer",
-                border:
-                  selectedProduct === box.label
-                    ? "2px solid #E7462C"
-                    : undefined,
-              }}
+              style={{ cursor: "pointer", textDecoration: "none" }}
             >
               <i className={box.icon}></i>
               <span>{box.label}</span>
-            </button>
+            </Link>
           ))}
         </div>
       </div>
@@ -103,9 +56,8 @@ export default function TeklifAlClient() {
           sizes="200px"
         />
         <QuoteForm
-          preselectedProduct={selectedProduct}
           formTitle="Sigorta Teklifi Alın!"
-          key={selectedProduct}
+          showInsuranceSelect
         />
 
         <Link

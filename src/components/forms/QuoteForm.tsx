@@ -7,6 +7,8 @@ import { useEffect, useRef, useCallback, useState } from "react";
 import IMask from "imask";
 import Swal from "sweetalert2";
 import "sweetalert2/dist/sweetalert2.min.css";
+import TomSelect from "tom-select";
+import "tom-select/dist/css/tom-select.bootstrap5.min.css";
 import KvkkCheckbox from "./KvkkCheckbox";
 
 const quoteSchema = z.object({
@@ -34,6 +36,7 @@ interface QuoteFormProps {
 const insuranceOptions = [
   "Trafik Sigortası",
   "Kasko Sigortası",
+  "DASK",
   "Tamamlayıcı Sağlık Sigortası",
   "Özel Sağlık Sigortası",
   "Nakliyat Sigortası",
@@ -43,6 +46,7 @@ const insuranceOptions = [
   "Ferdi Kaza Sigortası",
   "Mesleki Sorumluluk Sigortası",
   "Yabancı Uyruklular İçin Sağlık Sigortası",
+  "Cep Telefonu Sigortası",
 ];
 
 export default function QuoteForm({
@@ -53,11 +57,22 @@ export default function QuoteForm({
   showInsuranceSelect = false,
 }: QuoteFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [activeInsurance, setActiveInsurance] = useState<string>(
+    preselectedProduct ?? ""
+  );
   const formLoadTime = useRef(Date.now());
   const honeypotRef = useRef<HTMLInputElement>(null);
   const tcRef = useRef<HTMLInputElement>(null);
   const phoneRef = useRef<HTMLInputElement>(null);
   const dateRef = useRef<HTMLInputElement>(null);
+  const insuranceSelectRef = useRef<HTMLSelectElement>(null);
+
+  // Araç plakası + belge seri no sadece Trafik/Kasko için
+  const isVehicle =
+    activeInsurance === "Trafik Sigortası" ||
+    activeInsurance === "Kasko Sigortası";
+  const wantPlaka = showPlaka || (showInsuranceSelect && isVehicle);
+  const wantSerino = showSerino || (showInsuranceSelect && isVehicle);
 
   useEffect(() => {
     formLoadTime.current = Date.now();
@@ -143,9 +158,30 @@ export default function QuoteForm({
     }
   }, [setValue]);
 
+  useEffect(() => {
+    if (!showInsuranceSelect || !insuranceSelectRef.current) return;
+    const ts = new TomSelect(insuranceSelectRef.current, {
+      create: false,
+      allowEmptyOption: true,
+      placeholder: "Sigorta Türünü Seçiniz",
+      onChange: (val: string) => {
+        setValue("insuranceType", val, { shouldValidate: false });
+        setActiveInsurance(val);
+      },
+    });
+    if (preselectedProduct) {
+      ts.setValue(preselectedProduct, true);
+    }
+    return () => ts.destroy();
+  }, [showInsuranceSelect, preselectedProduct, setValue]);
+
   const onSubmit = async (data: QuoteFormData) => {
     setIsSubmitting(true);
     try {
+      const sourcePath =
+        typeof window !== "undefined"
+          ? window.location.pathname + window.location.search
+          : "";
       const response = await fetch("/api/quote", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -153,6 +189,7 @@ export default function QuoteForm({
           ...data,
           _hp: honeypotRef.current?.value ?? "",
           _ts: formLoadTime.current,
+          _path: sourcePath,
         }),
       });
 
@@ -248,7 +285,12 @@ export default function QuoteForm({
             <div className="form-input col form-group input-group" style={colStyle}>
               <label htmlFor="input-type" className="d-none"></label>
               <span className="input-group-text"><i className="icon-insurance-type "></i></span>
-              <select id="input-type" className="form-control" {...register("insuranceType")}>
+              <select
+                id="input-type"
+                className="select-beast form-control"
+                ref={insuranceSelectRef}
+                defaultValue={preselectedProduct ?? ""}
+              >
                 <option value="">Sigorta Türü Seçiniz</option>
                 {insuranceOptions.map((opt) => (
                   <option key={opt} value={opt}>{opt}</option>
@@ -259,7 +301,7 @@ export default function QuoteForm({
           )}
 
           {/* Plaka (trafik/kasko) */}
-          {showPlaka && (
+          {wantPlaka && (
             <div className="form-input col form-group input-group" style={colStyle}>
               <label htmlFor="input-plaka" className="d-none"></label>
               <span className="input-group-text"><i className="icon-plaka "></i></span>
@@ -267,12 +309,12 @@ export default function QuoteForm({
             </div>
           )}
 
-          {/* Şasi No (trafik/kasko) */}
-          {showSerino && (
+          {/* Belge Seri No (trafik/kasko) */}
+          {wantSerino && (
             <div className="form-input col form-group input-group" style={colStyle}>
               <label htmlFor="input-serino" className="d-none"></label>
               <span className="input-group-text"><i className="icon-serino "></i></span>
-              <input required type="text" placeholder="Şasi Numarası" id="input-serino" className="form-control imask" {...register("serino")} />
+              <input required type="text" placeholder="Belge Seri No" id="input-serino" className="form-control imask" {...register("serino")} />
             </div>
           )}
 

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     description:
       "Size özel indirimler ile en uygun sigorta fiyatları için online teklif alın. Trafik, kasko, konut, dask, ferdi kaza, tamamlayıcı sağlık sigortası fiyatları.",
     siteName: "Sigortastarı",
-    locale: "tr-TR",
+    locale: "tr_TR",
     images: [{ url: "/images/logos.png" }],
   },
   alternates: { canonical: "https://www.sigortastari.com/teklif-al" },
@@ -117,6 +117,9 @@ h1{
 }
 @media(max-width:1300px){
   #file-img-w{display:none}
+}
+.ts-wrapper.select-beast.form-control{
+  padding-left: 12px !important;
 }
           `,
         }}

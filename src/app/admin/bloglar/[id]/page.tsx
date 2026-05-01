@@ -30,9 +30,9 @@ export default function EditPostPage({ params }: Props) {
       });
   }, [id]);
 
-  if (loading) return <AdminShell><p>Yükleniyor...</p></AdminShell>;
-  if (error) return <AdminShell><p style={{ color: "#ef4444" }}>{error}</p></AdminShell>;
-  if (!post) return <AdminShell><p>Post bulunamadı</p></AdminShell>;
+  if (loading) return <AdminShell><div className="admin-empty">Yükleniyor...</div></AdminShell>;
+  if (error) return <AdminShell><div className="admin-empty">{error}</div></AdminShell>;
+  if (!post) return <AdminShell><div className="admin-empty">Post bulunamadı</div></AdminShell>;
 
   const initialData = {
     id: post.id as string,
@@ -50,9 +50,7 @@ export default function EditPostPage({ params }: Props) {
   return (
     <AdminShell>
       <h1>Yazıyı Düzenle</h1>
-      <div className="card">
-        <PostForm initialData={initialData} isEdit />
-      </div>
+      <PostForm initialData={initialData} isEdit />
     </AdminShell>
   );
 }

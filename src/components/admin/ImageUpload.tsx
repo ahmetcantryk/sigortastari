@@ -56,53 +56,48 @@ export default function ImageUpload({ label, value, onChange, placeholder }: Pro
     <div className="form-group">
       <label>{label}</label>
 
-      {/* Önizleme + Sürükle/Bırak alanı */}
       <div
-        onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
+        className={`dropzone ${dragOver ? "drag-over" : ""}`}
+        onDragOver={(e) => {
+          e.preventDefault();
+          setDragOver(true);
+        }}
         onDragLeave={() => setDragOver(false)}
         onDrop={handleDrop}
-        style={{
-          border: `2px dashed ${dragOver ? "#3b82f6" : "#cbd5e1"}`,
-          borderRadius: 8,
-          padding: 16,
-          textAlign: "center",
-          background: dragOver ? "#eff6ff" : "#f8fafc",
-          transition: "all 0.2s",
-          marginBottom: 8,
-          cursor: "pointer",
-        }}
         onClick={() => fileRef.current?.click()}
       >
         {value ? (
-          <div style={{ position: "relative", display: "inline-block" }}>
+          <div className="dropzone-preview">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={value}
-              alt="Önizleme"
-              style={{ maxWidth: 280, maxHeight: 160, objectFit: "cover", borderRadius: 6 }}
-            />
+            <img src={value} alt="Önizleme" />
             <button
               type="button"
-              onClick={(e) => { e.stopPropagation(); onChange(""); }}
-              style={{
-                position: "absolute", top: -8, right: -8,
-                width: 24, height: 24, borderRadius: "50%",
-                background: "#ef4444", color: "#fff", border: "none",
-                cursor: "pointer", fontSize: 14, lineHeight: "24px",
+              className="dropzone-remove"
+              onClick={(e) => {
+                e.stopPropagation();
+                onChange("");
               }}
+              aria-label="Görseli kaldır"
             >
-              &times;
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
             </button>
           </div>
         ) : (
-          <div style={{ color: "#64748b", fontSize: 13, padding: "20px 0" }}>
+          <div className="dropzone-empty">
             {uploading ? (
               <span>Yükleniyor...</span>
             ) : (
               <>
-                <div style={{ fontSize: 28, marginBottom: 4 }}>+</div>
-                <div>Görsel sürükleyin veya tıklayın</div>
-                <div style={{ fontSize: 11, marginTop: 4 }}>JPG, PNG, WebP - max 5MB</div>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="dropzone-icon">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                  <circle cx="8.5" cy="8.5" r="1.5" />
+                  <polyline points="21 15 16 10 5 21" />
+                </svg>
+                <div className="dropzone-title">Görsel sürükleyin veya tıklayın</div>
+                <div className="dropzone-hint">JPG, PNG, WebP — max 5MB</div>
               </>
             )}
           </div>
@@ -117,14 +112,12 @@ export default function ImageUpload({ label, value, onChange, placeholder }: Pro
         style={{ display: "none" }}
       />
 
-      {/* URL elle girme */}
       <input
         type="text"
-        className="form-control"
+        className="form-control dropzone-url"
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder || "veya URL yapıştırın"}
-        style={{ fontSize: 12, color: "#64748b" }}
       />
     </div>
   );

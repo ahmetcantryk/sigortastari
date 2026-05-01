@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     description:
       "Web sitemizdeki gizlilik ve web sitesi kullanım şartlarını buradan inceleyebilirsiniz. Sigorta Starı'nın gizlilik ve web kullanım şartları burada. Bilgi için tıklayın.",
     siteName: "Sigortastarı",
-    locale: "tr-TR",
+    locale: "tr_TR",
     images: [{ url: "/images/logos.png" }],
   },
   alternates: {

@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 import { generateSlug } from "@/lib/slug";
 import { useToast } from "./Toast";
 import ImageUpload from "./ImageUpload";
+import Select from "./Select";
 
 const QuillEditor = dynamic(() => import("./QuillEditor"), { ssr: false });
 
@@ -54,7 +55,9 @@ export default function PostForm({ initialData, isEdit }: Props) {
   const toast = useToast();
 
   useEffect(() => {
-    fetch("/api/admin/categories").then((r) => r.json()).then(setCategories);
+    fetch("/api/admin/categories")
+      .then((r) => r.json())
+      .then(setCategories);
   }, []);
 
   const update = (field: keyof PostData, value: string | boolean) => {
@@ -98,119 +101,133 @@ export default function PostForm({ initialData, isEdit }: Props) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="form-row">
+      <div className="section">
+        <div className="section-head">
+          <span>Temel Bilgiler</span>
+        </div>
+        <div className="form-row">
+          <div className="form-group">
+            <label>Başlık <span className="req">*</span></label>
+            <input
+              type="text"
+              className="form-control"
+              value={form.title}
+              onChange={(e) => update("title", e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label className="label-with-action">
+              <span>Slug <span className="req">*</span></span>
+              {!isEdit && (
+                <button
+                  type="button"
+                  className="link-btn"
+                  onClick={() => setAutoSlug(!autoSlug)}
+                >
+                  {autoSlug ? "Manuel" : "Otomatik"}
+                </button>
+              )}
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              value={form.slug}
+              onChange={(e) => {
+                setAutoSlug(false);
+                update("slug", e.target.value);
+              }}
+              required
+            />
+          </div>
+        </div>
+
         <div className="form-group">
-          <label>Başlık *</label>
+          <label>Meta Başlık <span className="hint">(SEO — boş bırakılırsa başlık kullanılır)</span></label>
           <input
             type="text"
             className="form-control"
-            value={form.title}
-            onChange={(e) => update("title", e.target.value)}
-            required
+            value={form.meta_title}
+            onChange={(e) => update("meta_title", e.target.value)}
+            placeholder="Arama motorlarında görünecek başlık"
           />
         </div>
+
+        <div className="form-row">
+          <div className="form-group">
+            <label>Kategori <span className="req">*</span></label>
+            <Select
+              value={form.category_id}
+              onChange={(v) => update("category_id", v)}
+              options={categories.map((c) => ({ value: c.id, label: c.name }))}
+              placeholder="Kategori seçin"
+            />
+          </div>
+          <div className="form-group">
+            <label>Yayın Tarihi</label>
+            <input
+              type="date"
+              className="form-control"
+              value={form.published_date}
+              onChange={(e) => update("published_date", e.target.value)}
+            />
+          </div>
+        </div>
+      </div>
+
+      <div className="section">
+        <div className="section-head">
+          <span>İçerik</span>
+        </div>
         <div className="form-group">
-          <label>
-            Slug *
-            {!isEdit && (
-              <span
-                style={{ fontWeight: 400, cursor: "pointer", marginLeft: 8, color: "#3b82f6", fontSize: 12 }}
-                onClick={() => setAutoSlug(!autoSlug)}
-              >
-                [{autoSlug ? "manuel yaz" : "otomatik"}]
-              </span>
-            )}
+          <label>Kısa İçerik <span className="req">*</span></label>
+          <textarea
+            className="form-control"
+            value={form.short_content}
+            onChange={(e) => update("short_content", e.target.value)}
+            rows={3}
+            required
+            placeholder="Liste görünümünde ve önizlemede gösterilecek özet"
+          />
+        </div>
+
+        <ImageUpload
+          label="Blog Görseli"
+          value={form.image}
+          onChange={(url) => update("image", url)}
+          placeholder="https://... veya dosya yükleyin"
+        />
+
+        <div className="form-group">
+          <label className="checkbox-label">
+            <input
+              type="checkbox"
+              checked={form.is_popular}
+              onChange={(e) => update("is_popular", e.target.checked)}
+            />
+            <span>Popüler yazı olarak işaretle</span>
           </label>
-          <input
-            type="text"
-            className="form-control"
-            value={form.slug}
-            onChange={(e) => { setAutoSlug(false); update("slug", e.target.value); }}
-            required
-          />
         </div>
-      </div>
 
-      <div className="form-group">
-        <label>Meta Başlık (SEO)</label>
-        <input
-          type="text"
-          className="form-control"
-          value={form.meta_title}
-          onChange={(e) => update("meta_title", e.target.value)}
-          placeholder="Boş bırakılırsa başlık kullanılır"
-        />
-      </div>
-
-      <div className="form-row">
         <div className="form-group">
-          <label>Kategori *</label>
-          <select
-            className="form-control"
-            value={form.category_id}
-            onChange={(e) => update("category_id", e.target.value)}
-            required
-          >
-            <option value="">Kategori seçin</option>
-            {categories.map((c) => (
-              <option key={c.id} value={c.id}>{c.name}</option>
-            ))}
-          </select>
-        </div>
-        <div className="form-group">
-          <label>Yayın Tarihi</label>
-          <input
-            type="date"
-            className="form-control"
-            value={form.published_date}
-            onChange={(e) => update("published_date", e.target.value)}
+          <label>Detaylı İçerik</label>
+          <QuillEditor
+            value={form.detail_content}
+            onChange={(html) => update("detail_content", html)}
           />
         </div>
       </div>
 
-      <div className="form-group">
-        <label>Kısa İçerik *</label>
-        <textarea
-          className="form-control"
-          value={form.short_content}
-          onChange={(e) => update("short_content", e.target.value)}
-          rows={3}
-          required
-        />
-      </div>
-
-      <ImageUpload
-        label="Blog Görseli"
-        value={form.image}
-        onChange={(url) => update("image", url)}
-        placeholder="https://... veya dosya yükleyin"
-      />
-
-      <div className="form-group">
-        <label className="checkbox-label">
-          <input
-            type="checkbox"
-            checked={form.is_popular}
-            onChange={(e) => update("is_popular", e.target.checked)}
-          />
-          Popüler yazı olarak işaretle
-        </label>
-      </div>
-
-      <div className="form-group">
-        <label>Detaylı İçerik</label>
-        <QuillEditor
-          value={form.detail_content}
-          onChange={(html) => update("detail_content", html)}
-        />
-      </div>
-
-      <div style={{ display: "flex", gap: 12, marginTop: 20 }}>
+      <div className="form-footer">
+        <button
+          type="button"
+          className="btn btn-secondary"
+          onClick={() => router.push("/admin/bloglar")}
+        >
+          İptal
+        </button>
         <button type="submit" className="btn btn-primary" disabled={saving}>
           {saving ? "Kaydediliyor..." : isEdit ? "Güncelle" : "Yayınla"}
-        </button>
-        <button type="button" className="btn btn-secondary" onClick={() => router.push("/admin/bloglar")}>
-          İptal
         </button>
       </div>
     </form>

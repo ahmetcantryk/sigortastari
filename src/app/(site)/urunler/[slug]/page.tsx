@@ -37,7 +37,7 @@ export async function generateMetadata({
       url: `https://www.sigortastari.com/urunler/${content.slug}`,
       description: content.metaDescription,
       siteName: "Sigortastarı",
-      locale: "tr-TR",
+      locale: "tr_TR",
       images: [{ url: "/images/logos.png" }],
     },
     alternates: {

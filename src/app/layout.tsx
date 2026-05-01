@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.sigortastari.com"),
   title: {
     default: "En Uygun Sigorta, Sigorta Starı - Hayatınıza Yıldız Dokunuşu!",
-    template: "%s | Sigorta Starı",
+    template: "%s",
   },
   description:
     "Sigorta Starı, tüm sigorta ihtiyaçlarınız için en uygun trafik, kasko, tamamlayıcı sağlık, konut, iş yeri, ferdi kaza, nakliyat ve birçok sigorta ürünü sunar!",
@@ -36,10 +36,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "tr_TR",
-    siteName: "Sigorta Starı",
+    siteName: "Sigortastarı",
     images: [{ url: "/images/logos.png" }],
   },
-  robots: { index: false, follow: false },
+  robots: { index: true, follow: true },
+  other: {
+    "facebook-domain-verification": "etikai8kseznnh2mn2vcpk0tovkn6b",
+  },
   alternates: { canonical: "https://www.sigortastari.com" },
 };
 

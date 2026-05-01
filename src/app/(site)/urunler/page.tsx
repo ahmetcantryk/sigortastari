@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     description:
       "Sigorta Starı'nın sunduğu geniş ürün yelpazesi ile ihtiyacınıza uygun trafik, kasko, ferdi kaza, seyahat, özel sağlık ve diğer sigorta seçenekleri için tıklayın.",
     siteName: "Sigortastarı",
-    locale: "tr-TR",
+    locale: "tr_TR",
     images: [{ url: "/images/logos.png" }],
   },
   alternates: { canonical: "https://www.sigortastari.com/urunler" },

@@ -19,10 +19,11 @@ export const metadata: Metadata = {
     description:
       "Sigorta Starı, tüm sigorta ihtiyaçlarınız için en uygun trafik, kasko, tamamlayıcı sağlık, konut, iş yeri, ferdi kaza, nakliyat ve birçok sigorta ürünü sunar!",
     siteName: "Sigortastarı",
-    locale: "tr-TR",
+    locale: "tr_TR",
     images: [{ url: "/images/logos.png" }],
   },
-  alternates: { canonical: "https://www.sigortastari.com" },
+  robots: { index: true, follow: true },
+  alternates: { canonical: "https://www.sigortastari.com/" },
 };
 
 export default function Home() {

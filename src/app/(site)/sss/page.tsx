@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     description:
       "Trafik, kasko, tamamlayıcı sağlık ve konut sigortası gibi konular hakkında merak ettiklerinize dair tüm soruların cevaplarına buradan kolayca ulaşabilirsiniz.",
     siteName: "Sigortastarı",
-    locale: "tr-TR",
+    locale: "tr_TR",
     images: [{ url: "/images/logos.png" }],
   },
   alternates: { canonical: "https://www.sigortastari.com/sss" },

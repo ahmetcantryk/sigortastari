@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     description:
       "Kasko, ÖSS, trafik, konut, iş yeri, TSS ve diğer sigorta ürünleri için teklifi almak istiyorsanız Sigorta Starı ile iletişime geçin ve iletişim formunu doldurun.",
     siteName: "Sigortastarı",
-    locale: "tr-TR",
+    locale: "tr_TR",
     images: [{ url: "/images/logos.png" }],
   },
   alternates: { canonical: "https://www.sigortastari.com/iletisim" },

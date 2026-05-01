@@ -7,9 +7,7 @@ export default function YeniYaziPage() {
   return (
     <AdminShell>
       <h1>Yeni Blog Yazısı</h1>
-      <div className="card">
-        <PostForm />
-      </div>
+      <PostForm />
     </AdminShell>
   );
 }
